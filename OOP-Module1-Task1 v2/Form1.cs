@@ -12,6 +12,8 @@ namespace OOP_Module1_Task1_v2
 {
     public partial class Form1 : Form
     {
+        private List<Planet> planets = new List<Planet>();
+
         public Form1()
         {
             InitializeComponent();
