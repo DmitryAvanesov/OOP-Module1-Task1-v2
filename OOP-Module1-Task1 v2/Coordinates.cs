@@ -19,12 +19,18 @@ namespace OOP_Module1_Task1_v2
 
         public int X
         {
-            get;
+            get
+            {
+                return x;
+            }
         }
 
         public int Y
         {
-            get;
+            get
+            {
+                return y;
+            }
         }
     }
 }

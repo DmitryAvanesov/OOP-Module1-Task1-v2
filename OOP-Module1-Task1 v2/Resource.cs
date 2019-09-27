@@ -18,12 +18,18 @@ namespace OOP_Module1_Task1_v2
 
         public int Amount
         {
-            get;
+            get
+            {
+                return amount;
+            }
         }
 
         public string Type
         {
-            get;
+            get
+            {
+                return type;
+            }
         }
     }
 }

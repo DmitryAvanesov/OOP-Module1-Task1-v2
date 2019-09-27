@@ -11,21 +11,29 @@ namespace OOP_Module1_Task1_v2
     class Planet : MapObject
     {
         private string name;
-        private int size;
         private List<Colony> colonies = new List<Colony>();
         private List<Resource> resources = new List<Resource>();
-
-        private Label planetLabel;
 
         public Planet(string newName, Coordinates newCoord)
         {
             name = newName;
             coordinates = newCoord;
+        }
 
-            planetLabel = new Label();
-            planetLabel.Location = new Point(coordinates.X, coordinates.Y);
-            planetLabel.Text = name;
-            Form1.Controls.Add(planetLabel);
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
+        public Coordinates Coordinates
+        {
+            get
+            {
+                return coordinates;
+            }
         }
 
         public void CreateColony(string colonyName)
@@ -44,7 +52,6 @@ namespace OOP_Module1_Task1_v2
 
             Console.WriteLine();
         }
-
         public void ShowResources()
         {
             for (int i = 0; i < resources.Count; i++)
