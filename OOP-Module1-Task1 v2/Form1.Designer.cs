@@ -31,11 +31,8 @@
             this.coloniesPanel = new System.Windows.Forms.Panel();
             this.buildingsPanel = new System.Windows.Forms.Panel();
             this.inputPlanetName = new System.Windows.Forms.TextBox();
-            this.inputPlanetCoordinateX = new System.Windows.Forms.TextBox();
-            this.inputPlanetCoordinateY = new System.Windows.Forms.TextBox();
             this.addPlanetButton = new System.Windows.Forms.Button();
             this.planetsPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -68,33 +65,17 @@
             // 
             this.inputPlanetName.Location = new System.Drawing.Point(12, 12);
             this.inputPlanetName.Name = "inputPlanetName";
-            this.inputPlanetName.Size = new System.Drawing.Size(304, 22);
+            this.inputPlanetName.Size = new System.Drawing.Size(398, 22);
             this.inputPlanetName.TabIndex = 3;
             this.inputPlanetName.Text = "Planet\'s name";
             // 
-            // inputPlanetCoordinateX
-            // 
-            this.inputPlanetCoordinateX.Location = new System.Drawing.Point(322, 12);
-            this.inputPlanetCoordinateX.Name = "inputPlanetCoordinateX";
-            this.inputPlanetCoordinateX.Size = new System.Drawing.Size(85, 22);
-            this.inputPlanetCoordinateX.TabIndex = 4;
-            this.inputPlanetCoordinateX.Text = "0";
-            // 
-            // inputPlanetCoordinateY
-            // 
-            this.inputPlanetCoordinateY.Location = new System.Drawing.Point(417, 12);
-            this.inputPlanetCoordinateY.Name = "inputPlanetCoordinateY";
-            this.inputPlanetCoordinateY.Size = new System.Drawing.Size(85, 22);
-            this.inputPlanetCoordinateY.TabIndex = 5;
-            this.inputPlanetCoordinateY.Text = "0";
-            // 
             // addPlanetButton
             // 
-            this.addPlanetButton.Location = new System.Drawing.Point(508, 11);
+            this.addPlanetButton.Location = new System.Drawing.Point(416, 11);
             this.addPlanetButton.Name = "addPlanetButton";
-            this.addPlanetButton.Size = new System.Drawing.Size(124, 23);
+            this.addPlanetButton.Size = new System.Drawing.Size(216, 23);
             this.addPlanetButton.TabIndex = 6;
-            this.addPlanetButton.Text = "Add planet";
+            this.addPlanetButton.Text = "Discover new planet";
             this.addPlanetButton.UseVisualStyleBackColor = true;
             this.addPlanetButton.Click += new System.EventHandler(this.AddPlanetButton_Click);
             // 
@@ -105,15 +86,6 @@
             this.planetsPanel.Name = "planetsPanel";
             this.planetsPanel.Size = new System.Drawing.Size(620, 983);
             this.planetsPanel.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(407, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(12, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = ";";
             // 
             // textBox1
             // 
@@ -214,10 +186,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.inputPlanetCoordinateY);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.addPlanetButton);
-            this.Controls.Add(this.inputPlanetCoordinateX);
             this.Controls.Add(this.inputPlanetName);
             this.Controls.Add(this.buildingsPanel);
             this.Controls.Add(this.coloniesPanel);
@@ -234,11 +203,8 @@
         private System.Windows.Forms.Panel coloniesPanel;
         private System.Windows.Forms.Panel buildingsPanel;
         private System.Windows.Forms.TextBox inputPlanetName;
-        private System.Windows.Forms.TextBox inputPlanetCoordinateX;
-        private System.Windows.Forms.TextBox inputPlanetCoordinateY;
         private System.Windows.Forms.Button addPlanetButton;
         private System.Windows.Forms.Panel planetsPanel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;

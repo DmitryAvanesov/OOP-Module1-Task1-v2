@@ -8,31 +8,35 @@ using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
 {
-    class Planet : MapObject
+    class Planet : MapObject, SelectableObject
     {
-        private string name;
+        public bool IsSelected { get; set; }
+        public string Name { get; }
+        public Coordinates Coordinates { get; }
+        public int Radius { get; }
+
         private List<Colony> colonies = new List<Colony>();
         private List<Resource> resources = new List<Resource>();
 
-        public Planet(string newName, Coordinates newCoord)
+        public Planet(string newName)
         {
-            name = newName;
-            coordinates = newCoord;
+            IsSelected = false;
+            Name = newName;
+
+            Random random = new Random();
+            Coordinates = new Coordinates(random.Next(-10000, 10000), random.Next(-10000, 10000));
+            Radius = random.Next(10, 1000);
         }
 
-        public string Name
+        public void ChangeSelectionState()
         {
-            get
+            if (IsSelected)
             {
-                return name;
+                IsSelected = false;
             }
-        }
-
-        public Coordinates Coordinates
-        {
-            get
+            else
             {
-                return coordinates;
+                IsSelected = true;
             }
         }
 
@@ -43,7 +47,7 @@ namespace OOP_Module1_Task1_v2
 
         public void ShowColonies()
         {
-            Console.WriteLine("{0} colonies:", name);
+            Console.WriteLine("{0} colonies:", Name);
 
             for (int i = 0; i < colonies.Count; i++)
             {
@@ -52,6 +56,7 @@ namespace OOP_Module1_Task1_v2
 
             Console.WriteLine();
         }
+
         public void ShowResources()
         {
             for (int i = 0; i < resources.Count; i++)

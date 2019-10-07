@@ -8,29 +8,13 @@ namespace OOP_Module1_Task1_v2
 {
     class Coordinates
     {
-        private int x;
-        private int y;
+        public int X { get; }
+        public int Y { get; }
 
         public Coordinates(int xCoord, int yCoord)
         {
-            x = xCoord;
-            y = yCoord;
-        }
-
-        public int X
-        {
-            get
-            {
-                return x;
-            }
-        }
-
-        public int Y
-        {
-            get
-            {
-                return y;
-            }
+            X = xCoord;
+            Y = yCoord;
         }
     }
 }

@@ -16,11 +16,6 @@ namespace OOP_Module1_Task1_v2
             coordinates = new Coordinates(0, 0);
         }
 
-        public void MakeUnit()
-        {
-            // todo
-        }
-
         public void GetResources()
         {
             // todo
