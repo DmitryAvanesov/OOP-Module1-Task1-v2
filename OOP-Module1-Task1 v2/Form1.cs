@@ -14,6 +14,7 @@ namespace OOP_Module1_Task1_v2
     {
         private List<Planet> planets = new List<Planet>();
         private int labelPosition = 10;
+        public string ColoniesLabel { get; }
 
         public Form1()
         {
@@ -24,6 +25,7 @@ namespace OOP_Module1_Task1_v2
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
         }
+
         public void AddPlanet(string name)
         {
             planets.Add(new Planet(name));
@@ -37,18 +39,53 @@ namespace OOP_Module1_Task1_v2
                 planets[planets.Count - 1].Coordinates.Y),
 
                 Location = new Point(10, labelPosition),
-                AutoSize = true
+                AutoSize = true,
+                Name = (planets.Count - 1).ToString()
             };
+            planets[planets.Count - 1].label = planetLabel;
+
+            planetLabel.Click += new EventHandler(SelectPlanet);
 
             labelPosition += 20;
             planetsPanel.Controls.Add(planetLabel);
         }
 
+        private void SelectPlanet(object sender, EventArgs e)
+        {
+            Label planetLabel = sender as Label;
+
+            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
+            {
+                if (planets[currentPlanet].IsSelected)
+                {
+                    planets[currentPlanet].Unselect(coloniesPanel);
+                    break;
+                }
+            }
+
+            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
+            {
+                if (currentPlanet == int.Parse(planetLabel.Name))
+                {
+                    planets[currentPlanet].Select(coloniesPanel);
+                    break;
+                }
+            }
+        }
+
         private void AddPlanetButton_Click(object sender, EventArgs e)
         {
-            if (planets.Count < 45)
+             AddPlanet(inputPlanetName.Text);
+        }
+
+        private void AddColonyButton_Click(object sender, EventArgs e)
+        {
+            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
             {
-                AddPlanet(inputPlanetName.Text);
+                if (planets[currentPlanet].IsSelected)
+                {
+                    planets[currentPlanet].CreateColony(inputColonyName.Text, coloniesPanel);
+                }
             }
         }
     }

@@ -14,6 +14,8 @@ namespace OOP_Module1_Task1_v2
         public string Name { get; }
         public Coordinates Coordinates { get; }
         public int Radius { get; }
+        private int labelPosition;
+        public Label label { get; set; }
 
         private List<Colony> colonies = new List<Colony>();
         private List<Resource> resources = new List<Resource>();
@@ -28,33 +30,64 @@ namespace OOP_Module1_Task1_v2
             Radius = random.Next(10, 1000);
         }
 
-        public void ChangeSelectionState()
+        public void Unselect (Panel coloniesPanel)
         {
-            if (IsSelected)
+            IsSelected = false;
+            label.BackColor = System.Drawing.Color.Transparent;
+            coloniesPanel.Controls.Clear();
+        }
+
+        public void Select(Panel coloniesPanel)
+        {
+            IsSelected = true;
+            label.BackColor = System.Drawing.Color.Beige;
+            ShowColonies(coloniesPanel);
+        }
+
+        private void ShowColonies(Panel coloniesPanel)
+        {
+            labelPosition = 10;
+
+            for (int currentColony = 0; currentColony < colonies.Count; currentColony++)
             {
-                IsSelected = false;
-            }
-            else
-            {
-                IsSelected = true;
+                Label colonyLabel = new Label
+                {
+                    Text = string.Format("{0}",
+                    colonies[currentColony].name),
+
+                    Location = new Point(10, labelPosition),
+                    AutoSize = true,
+                    Name = currentColony.ToString()
+                };
+
+                colonyLabel.Click += new EventHandler(SelectColony);
+
+                labelPosition += 20;
+                coloniesPanel.Controls.Add(colonyLabel);
             }
         }
 
-        public void CreateColony(string colonyName)
+        private void SelectColony(object sender, EventArgs e)
+        {
+            
+        }
+
+        public void CreateColony(string colonyName, Panel coloniesPanel)
         {
             colonies.Add(new Colony(colonyName));
-        }
 
-        public void ShowColonies()
-        {
-            Console.WriteLine("{0} colonies:", Name);
-
-            for (int i = 0; i < colonies.Count; i++)
+            Label colonyLabel = new Label
             {
-                Console.WriteLine(colonies[i].name);
-            }
+                Text = string.Format("{0}",
+                colonies[colonies.Count - 1].name),
 
-            Console.WriteLine();
+                Location = new Point(10, labelPosition),
+                AutoSize = true,
+                Name = (colonies.Count - 1).ToString()
+            };
+            labelPosition += 20;
+
+            coloniesPanel.Controls.Add(colonyLabel);
         }
 
         public void ShowResources()
