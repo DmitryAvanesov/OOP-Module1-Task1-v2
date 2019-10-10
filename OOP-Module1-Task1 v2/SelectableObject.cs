@@ -9,7 +9,7 @@ namespace OOP_Module1_Task1_v2
 {
     interface SelectableObject
     {
-        void Select(Panel coloniesPanel);
-        void Unselect(Panel coloniesPanel);
+        void Select();
+        void Unselect();
     }
 }

@@ -35,14 +35,17 @@ namespace OOP_Module1_Task1_v2
                 Text = string.Format("{0} | {1} km radius | x: {2}; y: {3}",
                 planets[planets.Count - 1].Name,
                 planets[planets.Count - 1].Radius,
-                planets[planets.Count - 1].Coordinates.X,
-                planets[planets.Count - 1].Coordinates.Y),
+                planets[planets.Count - 1].coordinates.X,
+                planets[planets.Count - 1].coordinates.Y),
 
                 Location = new Point(10, labelPosition),
                 AutoSize = true,
                 Name = (planets.Count - 1).ToString()
             };
-            planets[planets.Count - 1].label = planetLabel;
+
+            planets[planets.Count - 1].Label = planetLabel;
+            planets[planets.Count - 1].ColoniesPanel = coloniesPanel;
+            planets[planets.Count - 1].BuildingsPanel = buildingsPanel;
 
             planetLabel.Click += new EventHandler(SelectPlanet);
 
@@ -58,7 +61,7 @@ namespace OOP_Module1_Task1_v2
             {
                 if (planets[currentPlanet].IsSelected)
                 {
-                    planets[currentPlanet].Unselect(coloniesPanel);
+                    planets[currentPlanet].Unselect();
                     break;
                 }
             }
@@ -67,7 +70,7 @@ namespace OOP_Module1_Task1_v2
             {
                 if (currentPlanet == int.Parse(planetLabel.Name))
                 {
-                    planets[currentPlanet].Select(coloniesPanel);
+                    planets[currentPlanet].Select();
                     break;
                 }
             }
@@ -84,7 +87,8 @@ namespace OOP_Module1_Task1_v2
             {
                 if (planets[currentPlanet].IsSelected)
                 {
-                    planets[currentPlanet].CreateColony(inputColonyName.Text, coloniesPanel);
+                    planets[currentPlanet].CreateColony(inputColonyName.Text);
+                    break;
                 }
             }
         }
