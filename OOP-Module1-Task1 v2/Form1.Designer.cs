@@ -98,6 +98,7 @@
             this.addSawmillButton.TabIndex = 16;
             this.addSawmillButton.Text = "Add sawmill";
             this.addSawmillButton.UseVisualStyleBackColor = true;
+            this.addSawmillButton.Click += new System.EventHandler(this.AddSawmillButton_Click);
             // 
             // inputBuildingName
             // 
@@ -125,6 +126,7 @@
             this.addGoldmineButton.TabIndex = 17;
             this.addGoldmineButton.Text = "Add goldmine";
             this.addGoldmineButton.UseVisualStyleBackColor = true;
+            this.addGoldmineButton.Click += new System.EventHandler(this.AddGoldmineButton_Click);
             // 
             // Form1
             // 

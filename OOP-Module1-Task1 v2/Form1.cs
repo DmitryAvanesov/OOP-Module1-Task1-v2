@@ -92,5 +92,43 @@ namespace OOP_Module1_Task1_v2
                 }
             }
         }
+
+        private void AddGoldmineButton_Click(object sender, EventArgs e)
+        {
+            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
+            {
+                if (planets[currentPlanet].IsSelected)
+                {
+                    for (int currentColony = 0; currentColony < planets.Count; currentColony++)
+                    {
+                        if (planets[currentPlanet].colonies[currentColony].IsSelected)
+                        {
+                            planets[currentPlanet].colonies[currentColony].CreateGoldmine(
+                                inputBuildingName.Text);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void AddSawmillButton_Click(object sender, EventArgs e)
+        {
+            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
+            {
+                if (planets[currentPlanet].IsSelected)
+                {
+                    for (int currentColony = 0; currentColony < planets.Count; currentColony++)
+                    {
+                        if (planets[currentPlanet].colonies[currentColony].IsSelected)
+                        {
+                            planets[currentPlanet].colonies[currentColony].CreateSawmill(
+                                inputBuildingName.Text);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

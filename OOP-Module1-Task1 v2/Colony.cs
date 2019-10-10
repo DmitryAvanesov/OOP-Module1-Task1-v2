@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
@@ -12,7 +8,7 @@ namespace OOP_Module1_Task1_v2
     {
         public string name;
         private readonly List<Goldmine> goldmines = new List<Goldmine>();
-        private List<Sawmill> sawmills = new List<Sawmill>();
+        private readonly List<Sawmill> sawmills = new List<Sawmill>();
         public bool IsSelected { get; set; }
         public Label Label { get; set; }
         private int labelPosition = 10;
@@ -65,7 +61,7 @@ namespace OOP_Module1_Task1_v2
 
             Label buildingLabel = new Label
             {
-                Text = string.Format("{0} | Goldmine | x: {1}; y: {2}",
+                Text = string.Format("{0} | Sawmill | x: {1}; y: {2}",
                 sawmills[sawmills.Count - 1].name,
                 sawmills[sawmills.Count - 1].coordinates.X,
                 sawmills[sawmills.Count - 1].coordinates.Y),
@@ -87,8 +83,10 @@ namespace OOP_Module1_Task1_v2
             {
                 Label buildingLabel = new Label
                 {
-                    Text = string.Format("Goldmine {0}",
-                    currentBuilding),
+                    Text = string.Format("{0} | Goldmine | x: {1}; y: {2}",
+                    goldmines[goldmines.Count - 1].name,
+                    goldmines[goldmines.Count - 1].coordinates.X,
+                    goldmines[goldmines.Count - 1].coordinates.Y),
 
                     Location = new Point(10, labelPosition),
                     AutoSize = true,
@@ -103,8 +101,10 @@ namespace OOP_Module1_Task1_v2
             {
                 Label buildingLabel = new Label
                 {
-                    Text = string.Format("{0}",
-                    currentBuilding),
+                    Text = string.Format("{0} | Sawmill | x: {1}; y: {2}",
+                    sawmills[sawmills.Count - 1].name,
+                    sawmills[sawmills.Count - 1].coordinates.X,
+                    sawmills[sawmills.Count - 1].coordinates.Y),
 
                     Location = new Point(10, labelPosition),
                     AutoSize = true,
