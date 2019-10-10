@@ -16,7 +16,7 @@ namespace OOP_Module1_Task1_v2
         public Panel BuildingsPanel { get; set; }
 
         public List<Colony> colonies = new List<Colony>();
-        private readonly List<Resource> resources = new List<Resource>();
+        private List<Resource> resources = new List<Resource>();
 
         public Planet(string newName)
         {

@@ -7,6 +7,6 @@ namespace OOP_Module1_Task1_v2
         public string name;
         protected Timer timer;
         protected Budget mainBudget;
-        protected int interval = 10000;
+        protected int interval = 5000;
     }
 }

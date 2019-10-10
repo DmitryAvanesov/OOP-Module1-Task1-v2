@@ -37,42 +37,50 @@ namespace OOP_Module1_Task1_v2
 
         public void CreateGoldmine(string buildingName, Budget mainBudget)
         {
-            goldmines.Add(new Goldmine(buildingName, mainBudget));
-
-            Label buildingLabel = new Label
+            if (mainBudget.goldAmount >= 50 && mainBudget.woodAmount >= 30)
             {
-                Text = string.Format("{0} | Goldmine | x: {1}; y: {2}",
-                goldmines[goldmines.Count - 1].name,
-                goldmines[goldmines.Count - 1].coordinates.X,
-                goldmines[goldmines.Count - 1].coordinates.Y),
+                goldmines.Add(new Goldmine(buildingName, mainBudget));
 
-                Location = new Point(10, labelPosition),
-                AutoSize = true,
-                Name = (goldmines.Count - 1).ToString()
-            };
-            labelPosition += 20;
+                Label buildingLabel = new Label
+                {
+                    Text = string.Format("{0} | Goldmine | x: {1}; y: {2}",
+                    goldmines[goldmines.Count - 1].name,
+                    goldmines[goldmines.Count - 1].coordinates.X,
+                    goldmines[goldmines.Count - 1].coordinates.Y),
 
-            BuildingsPanel.Controls.Add(buildingLabel);
+                    Location = new Point(10, labelPosition),
+                    AutoSize = true,
+                    Name = (goldmines.Count - 1).ToString()
+                };
+                labelPosition += 20;
+
+                BuildingsPanel.Controls.Add(buildingLabel);
+                mainBudget.DecreaseBudget(50, 30);
+            }
         }
 
         public void CreateSawmill(string buildingName, Budget mainBudget)
         {
-            sawmills.Add(new Sawmill(buildingName, mainBudget));
-
-            Label buildingLabel = new Label
+            if (mainBudget.goldAmount >= 20 && mainBudget.woodAmount >= 100)
             {
-                Text = string.Format("{0} | Sawmill | x: {1}; y: {2}",
-                sawmills[sawmills.Count - 1].name,
-                sawmills[sawmills.Count - 1].coordinates.X,
-                sawmills[sawmills.Count - 1].coordinates.Y),
+                sawmills.Add(new Sawmill(buildingName, mainBudget));
 
-                Location = new Point(10, labelPosition),
-                AutoSize = true,
-                Name = (sawmills.Count - 1).ToString()
-            };
-            labelPosition += 20;
+                Label buildingLabel = new Label
+                {
+                    Text = string.Format("{0} | Sawmill | x: {1}; y: {2}",
+                    sawmills[sawmills.Count - 1].name,
+                    sawmills[sawmills.Count - 1].coordinates.X,
+                    sawmills[sawmills.Count - 1].coordinates.Y),
 
-            BuildingsPanel.Controls.Add(buildingLabel);
+                    Location = new Point(10, labelPosition),
+                    AutoSize = true,
+                    Name = (sawmills.Count - 1).ToString()
+                };
+                labelPosition += 20;
+
+                BuildingsPanel.Controls.Add(buildingLabel);
+                mainBudget.DecreaseBudget(20, 100);
+            }
         }
 
         public void ShowBuildings()

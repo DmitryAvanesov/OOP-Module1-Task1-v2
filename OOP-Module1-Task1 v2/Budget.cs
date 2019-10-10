@@ -4,8 +4,8 @@ namespace OOP_Module1_Task1_v2
 {
     class Budget
     {
-        private int goldAmount;
-        private int woodAmount;
+        public int goldAmount = 70;
+        public int woodAmount = 130;
         private Label goldLabel;
         private Label woodLabel;
 
@@ -13,6 +13,7 @@ namespace OOP_Module1_Task1_v2
         {
             goldLabel = newGoldLabel;
             woodLabel = newWoodLabel;
+            UpdateBudgetLabels();
         }
 
         public void IncreaseBudget(Gold goldIngot)
@@ -27,14 +28,11 @@ namespace OOP_Module1_Task1_v2
             UpdateBudgetLabels();
         }
 
-        public void DecreaseBudget(Gold goldIngot)
+        public void DecreaseBudget(int gold, int wood)
         {
-
-        }
-
-        public void DecreaseBudget(Wood woodPlank)
-        {
-
+            goldAmount -= gold;
+            woodAmount -= wood;
+            UpdateBudgetLabels();
         }
 
         private void UpdateBudgetLabels()

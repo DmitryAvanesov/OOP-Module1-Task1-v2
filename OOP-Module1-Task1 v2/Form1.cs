@@ -97,7 +97,8 @@ namespace OOP_Module1_Task1_v2
             {
                 if (planets[currentPlanet].IsSelected)
                 {
-                    for (int currentColony = 0; currentColony < planets.Count; currentColony++)
+                    for (int currentColony = 0;
+                        currentColony < planets[currentPlanet].colonies.Count; currentColony++)
                     {
                         if (planets[currentPlanet].colonies[currentColony].IsSelected)
                         {
@@ -116,7 +117,8 @@ namespace OOP_Module1_Task1_v2
             {
                 if (planets[currentPlanet].IsSelected)
                 {
-                    for (int currentColony = 0; currentColony < planets.Count; currentColony++)
+                    for (int currentColony = 0;
+                        currentColony < planets[currentPlanet].colonies.Count; currentColony++)
                     {
                         if (planets[currentPlanet].colonies[currentColony].IsSelected)
                         {
