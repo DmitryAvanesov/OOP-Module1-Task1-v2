@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
 {
-    class Planet : MapObject, SelectableObject
+    class Planet : MapObject, ISelectableObject
     {
         public bool IsSelected { get; set; }
         public string Name { get; }
@@ -16,7 +16,7 @@ namespace OOP_Module1_Task1_v2
         public Panel BuildingsPanel { get; set; }
 
         public List<Colony> colonies = new List<Colony>();
-        private List<Resource> resources = new List<Resource>();
+        private readonly List<Resource> resources = new List<Resource>();
 
         public Planet(string newName)
         {

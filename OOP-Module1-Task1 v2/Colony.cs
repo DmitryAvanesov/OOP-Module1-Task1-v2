@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
 {
-    class Colony : SelectableObject
+    class Colony : ISelectableObject
     {
         public string name;
         private readonly List<Goldmine> goldmines = new List<Goldmine>();
@@ -35,9 +35,9 @@ namespace OOP_Module1_Task1_v2
             ShowBuildings();
         }
 
-        public void CreateGoldmine(string buildingName)
+        public void CreateGoldmine(string buildingName, Budget mainBudget)
         {
-            goldmines.Add(new Goldmine(buildingName));
+            goldmines.Add(new Goldmine(buildingName, mainBudget));
 
             Label buildingLabel = new Label
             {
@@ -55,9 +55,9 @@ namespace OOP_Module1_Task1_v2
             BuildingsPanel.Controls.Add(buildingLabel);
         }
 
-        public void CreateSawmill(string buildingName)
+        public void CreateSawmill(string buildingName, Budget mainBudget)
         {
-            sawmills.Add(new Sawmill(buildingName));
+            sawmills.Add(new Sawmill(buildingName, mainBudget));
 
             Label buildingLabel = new Label
             {

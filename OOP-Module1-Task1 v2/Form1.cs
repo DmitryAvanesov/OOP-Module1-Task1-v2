@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
 {
     public partial class Form1 : Form
     {
-        private List<Planet> planets = new List<Planet>();
-        private int labelPosition = 10;
-        public string ColoniesLabel { get; }
+        private readonly List<Planet> planets = new List<Planet>();
+        private int labelPosition;
+        private Budget budget;
 
         public Form1()
         {
@@ -24,6 +19,9 @@ namespace OOP_Module1_Task1_v2
             TopMost = true;
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+
+            labelPosition = 10;
+            budget = new Budget(goldLabel, woodLabel);
         }
 
         public void AddPlanet(string name)
@@ -104,7 +102,7 @@ namespace OOP_Module1_Task1_v2
                         if (planets[currentPlanet].colonies[currentColony].IsSelected)
                         {
                             planets[currentPlanet].colonies[currentColony].CreateGoldmine(
-                                inputBuildingName.Text);
+                                inputBuildingName.Text, budget);
                             break;
                         }
                     }
@@ -123,7 +121,7 @@ namespace OOP_Module1_Task1_v2
                         if (planets[currentPlanet].colonies[currentColony].IsSelected)
                         {
                             planets[currentPlanet].colonies[currentColony].CreateSawmill(
-                                inputBuildingName.Text);
+                                inputBuildingName.Text, budget);
                             break;
                         }
                     }

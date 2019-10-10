@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Budget.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Colony.cs" />
     <Compile Include="Form1.cs">
@@ -54,6 +55,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gold.cs" />
     <Compile Include="Goldmine.cs" />
     <Compile Include="MapObject.cs" />
     <Compile Include="Planet.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Resource.cs" />
     <Compile Include="Sawmill.cs" />
     <Compile Include="SelectableObject.cs" />
+    <Compile Include="Wood.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
