@@ -50,9 +50,10 @@ namespace OOP_Module1_Task1_v2
 
                     Location = new Point(10, labelPosition),
                     AutoSize = true,
-                    Name = (goldmines.Count - 1).ToString()
+                    Name = (goldmines.Count - 1).ToString(),
+                    Font = new Font("Arial", 14)
                 };
-                labelPosition += 20;
+                labelPosition += 30;
 
                 BuildingsPanel.Controls.Add(buildingLabel);
                 mainBudget.DecreaseBudget(50, 30);
@@ -74,9 +75,10 @@ namespace OOP_Module1_Task1_v2
 
                     Location = new Point(10, labelPosition),
                     AutoSize = true,
-                    Name = (sawmills.Count - 1).ToString()
+                    Name = (sawmills.Count - 1).ToString(),
+                    Font = new Font("Arial", 14)
                 };
-                labelPosition += 20;
+                labelPosition += 30;
 
                 BuildingsPanel.Controls.Add(buildingLabel);
                 mainBudget.DecreaseBudget(20, 100);
@@ -98,10 +100,11 @@ namespace OOP_Module1_Task1_v2
 
                     Location = new Point(10, labelPosition),
                     AutoSize = true,
-                    Name = currentBuilding.ToString()
+                    Name = currentBuilding.ToString(),
+                    Font = new Font("Arial", 14)
                 };
 
-                labelPosition += 20;
+                labelPosition += 30;
                 BuildingsPanel.Controls.Add(buildingLabel);
             }
 
@@ -116,10 +119,11 @@ namespace OOP_Module1_Task1_v2
 
                     Location = new Point(10, labelPosition),
                     AutoSize = true,
-                    Name = currentBuilding.ToString()
+                    Name = currentBuilding.ToString(),
+                    Font = new Font("Arial", 14)
                 };
 
-                labelPosition += 20;
+                labelPosition += 30;
                 BuildingsPanel.Controls.Add(buildingLabel);
             }
         }

@@ -38,7 +38,8 @@ namespace OOP_Module1_Task1_v2
 
                 Location = new Point(10, labelPosition),
                 AutoSize = true,
-                Name = (planets.Count - 1).ToString()
+                Name = (planets.Count - 1).ToString(),
+                Font = new Font("Arial", 14)
             };
 
             planets[planets.Count - 1].Label = planetLabel;
@@ -47,7 +48,7 @@ namespace OOP_Module1_Task1_v2
 
             planetLabel.Click += new EventHandler(SelectPlanet);
 
-            labelPosition += 20;
+            labelPosition += 30;
             planetsPanel.Controls.Add(planetLabel);
         }
 

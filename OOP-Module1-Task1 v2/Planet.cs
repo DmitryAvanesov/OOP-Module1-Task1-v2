@@ -65,13 +65,14 @@ namespace OOP_Module1_Task1_v2
 
                     Location = new Point(10, labelPosition),
                     AutoSize = true,
-                    Name = currentColony.ToString()
+                    Name = currentColony.ToString(),
+                    Font = new Font("Arial", 14)
                 };
 
                 colonyLabel.Click += new EventHandler(SelectColony);
                 colonies[currentColony].Label = colonyLabel;
 
-                labelPosition += 20;
+                labelPosition += 30;
                 ColoniesPanel.Controls.Add(colonyLabel);
             }
         }
@@ -110,7 +111,8 @@ namespace OOP_Module1_Task1_v2
 
                 Location = new Point(10, labelPosition),
                 AutoSize = true,
-                Name = (colonies.Count - 1).ToString()
+                Name = (colonies.Count - 1).ToString(),
+                Font = new Font("Arial", 14)
             };
 
             colonies[colonies.Count - 1].Label = colonyLabel;
@@ -119,7 +121,7 @@ namespace OOP_Module1_Task1_v2
 
             colonyLabel.Click += new EventHandler(SelectColony);
 
-            labelPosition += 20;
+            labelPosition += 30;
             ColoniesPanel.Controls.Add(colonyLabel);
         }
     }

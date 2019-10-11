@@ -47,32 +47,34 @@
             // coloniesPanel
             // 
             this.coloniesPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.coloniesPanel.Location = new System.Drawing.Point(638, 47);
+            this.coloniesPanel.Location = new System.Drawing.Point(638, 75);
             this.coloniesPanel.Name = "coloniesPanel";
-            this.coloniesPanel.Size = new System.Drawing.Size(620, 934);
+            this.coloniesPanel.Size = new System.Drawing.Size(620, 863);
             this.coloniesPanel.TabIndex = 1;
             // 
             // buildingsPanel
             // 
             this.buildingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buildingsPanel.Location = new System.Drawing.Point(1264, 64);
+            this.buildingsPanel.Location = new System.Drawing.Point(1264, 75);
             this.buildingsPanel.Name = "buildingsPanel";
-            this.buildingsPanel.Size = new System.Drawing.Size(620, 917);
+            this.buildingsPanel.Size = new System.Drawing.Size(620, 863);
             this.buildingsPanel.TabIndex = 2;
             // 
             // inputPlanetName
             // 
-            this.inputPlanetName.Location = new System.Drawing.Point(12, 15);
+            this.inputPlanetName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.inputPlanetName.Location = new System.Drawing.Point(12, 12);
             this.inputPlanetName.Name = "inputPlanetName";
-            this.inputPlanetName.Size = new System.Drawing.Size(414, 22);
+            this.inputPlanetName.Size = new System.Drawing.Size(364, 34);
             this.inputPlanetName.TabIndex = 3;
             this.inputPlanetName.Text = "Planet\'s name";
             // 
             // addPlanetButton
             // 
-            this.addPlanetButton.Location = new System.Drawing.Point(432, 11);
+            this.addPlanetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addPlanetButton.Location = new System.Drawing.Point(382, 12);
             this.addPlanetButton.Name = "addPlanetButton";
-            this.addPlanetButton.Size = new System.Drawing.Size(200, 30);
+            this.addPlanetButton.Size = new System.Drawing.Size(250, 34);
             this.addPlanetButton.TabIndex = 6;
             this.addPlanetButton.Text = "Discover new planet";
             this.addPlanetButton.UseVisualStyleBackColor = true;
@@ -81,24 +83,26 @@
             // planetsPanel
             // 
             this.planetsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.planetsPanel.Location = new System.Drawing.Point(12, 47);
+            this.planetsPanel.Location = new System.Drawing.Point(12, 75);
             this.planetsPanel.Name = "planetsPanel";
-            this.planetsPanel.Size = new System.Drawing.Size(620, 934);
+            this.planetsPanel.Size = new System.Drawing.Size(620, 863);
             this.planetsPanel.TabIndex = 0;
             // 
             // inputColonyName
             // 
-            this.inputColonyName.Location = new System.Drawing.Point(638, 15);
+            this.inputColonyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.inputColonyName.Location = new System.Drawing.Point(638, 12);
             this.inputColonyName.Name = "inputColonyName";
-            this.inputColonyName.Size = new System.Drawing.Size(414, 22);
+            this.inputColonyName.Size = new System.Drawing.Size(364, 34);
             this.inputColonyName.TabIndex = 8;
             this.inputColonyName.Text = "Colony\'s name";
             // 
             // addSawmillButton
             // 
-            this.addSawmillButton.Location = new System.Drawing.Point(1734, 11);
+            this.addSawmillButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addSawmillButton.Location = new System.Drawing.Point(1709, 12);
             this.addSawmillButton.Name = "addSawmillButton";
-            this.addSawmillButton.Size = new System.Drawing.Size(150, 30);
+            this.addSawmillButton.Size = new System.Drawing.Size(175, 34);
             this.addSawmillButton.TabIndex = 16;
             this.addSawmillButton.Text = "Add sawmill";
             this.addSawmillButton.UseVisualStyleBackColor = true;
@@ -106,17 +110,19 @@
             // 
             // inputBuildingName
             // 
-            this.inputBuildingName.Location = new System.Drawing.Point(1264, 15);
+            this.inputBuildingName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.inputBuildingName.Location = new System.Drawing.Point(1264, 12);
             this.inputBuildingName.Name = "inputBuildingName";
-            this.inputBuildingName.Size = new System.Drawing.Size(308, 22);
+            this.inputBuildingName.Size = new System.Drawing.Size(258, 34);
             this.inputBuildingName.TabIndex = 13;
             this.inputBuildingName.Text = "Building\'s name";
             // 
             // addColonyButton
             // 
-            this.addColonyButton.Location = new System.Drawing.Point(1058, 11);
+            this.addColonyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addColonyButton.Location = new System.Drawing.Point(1008, 12);
             this.addColonyButton.Name = "addColonyButton";
-            this.addColonyButton.Size = new System.Drawing.Size(200, 30);
+            this.addColonyButton.Size = new System.Drawing.Size(250, 34);
             this.addColonyButton.TabIndex = 11;
             this.addColonyButton.Text = "Add colony";
             this.addColonyButton.UseVisualStyleBackColor = true;
@@ -124,9 +130,10 @@
             // 
             // addGoldmineButton
             // 
-            this.addGoldmineButton.Location = new System.Drawing.Point(1578, 11);
+            this.addGoldmineButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addGoldmineButton.Location = new System.Drawing.Point(1528, 12);
             this.addGoldmineButton.Name = "addGoldmineButton";
-            this.addGoldmineButton.Size = new System.Drawing.Size(150, 30);
+            this.addGoldmineButton.Size = new System.Drawing.Size(175, 34);
             this.addGoldmineButton.TabIndex = 17;
             this.addGoldmineButton.Text = "Add goldmine";
             this.addGoldmineButton.UseVisualStyleBackColor = true;
@@ -134,26 +141,26 @@
             // 
             // goldLabel
             // 
-            this.goldLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.goldLabel.Location = new System.Drawing.Point(12, 984);
+            this.goldLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.goldLabel.Location = new System.Drawing.Point(12, 950);
             this.goldLabel.Name = "goldLabel";
-            this.goldLabel.Size = new System.Drawing.Size(1500, 20);
+            this.goldLabel.Size = new System.Drawing.Size(1500, 35);
             this.goldLabel.TabIndex = 18;
             this.goldLabel.Text = "Gold: 0";
             // 
             // woodLabel
             // 
-            this.woodLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.woodLabel.Location = new System.Drawing.Point(12, 1004);
+            this.woodLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.woodLabel.Location = new System.Drawing.Point(12, 985);
             this.woodLabel.Name = "woodLabel";
-            this.woodLabel.Size = new System.Drawing.Size(1500, 20);
+            this.woodLabel.Size = new System.Drawing.Size(1500, 35);
             this.woodLabel.TabIndex = 19;
             this.woodLabel.Text = "Wood: 0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1594, 44);
+            this.label1.Location = new System.Drawing.Point(1556, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 17);
             this.label1.TabIndex = 20;
@@ -162,7 +169,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1746, 44);
+            this.label2.Location = new System.Drawing.Point(1739, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 17);
             this.label2.TabIndex = 21;
