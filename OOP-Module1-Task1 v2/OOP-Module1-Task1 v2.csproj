@@ -65,6 +65,7 @@
     <Compile Include="Resource.cs" />
     <Compile Include="Sawmill.cs" />
     <Compile Include="SelectableObject.cs" />
+    <Compile Include="Storage.cs" />
     <Compile Include="Wood.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

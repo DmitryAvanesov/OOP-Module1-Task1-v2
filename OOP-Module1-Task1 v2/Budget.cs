@@ -1,4 +1,6 @@
 ﻿using System.Windows.Forms;
+using System;
+using System.Collections.Generic;
 
 namespace OOP_Module1_Task1_v2
 {

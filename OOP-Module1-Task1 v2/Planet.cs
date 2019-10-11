@@ -28,7 +28,7 @@ namespace OOP_Module1_Task1_v2
             Radius = random.Next(10, 1000);
         }
 
-        public void Unselect ()
+        public void Unselect()
         {
             IsSelected = false;
             Label.BackColor = System.Drawing.Color.Transparent;
