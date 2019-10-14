@@ -9,8 +9,7 @@ namespace OOP_Module1_Task1_v2
     {
         private readonly List<Planet> planets = new List<Planet>();
         private int labelPosition;
-        private Budget budget;
-        private int selectedPlanet = 0;
+        private int selectedPlanet;
 
         public Form1()
         {
@@ -22,7 +21,6 @@ namespace OOP_Module1_Task1_v2
             WindowState = FormWindowState.Maximized;
 
             labelPosition = 10;
-            budget = new Budget(goldLabel, woodLabel);
         }
 
         public void AddPlanet(string name)
@@ -87,8 +85,8 @@ namespace OOP_Module1_Task1_v2
                     {
                         if (planets[currentPlanet].colonies[currentColony].IsSelected)
                         {
-                            planets[currentPlanet].colonies[currentColony].CreateGoldmine(
-                                inputBuildingName.Text, budget);
+                            planets[currentPlanet].colonies[currentColony].CreateBuilding<Goldmine>
+                                (planets[currentPlanet].Storage, 50, 30);
                             break;
                         }
                     }
@@ -107,8 +105,8 @@ namespace OOP_Module1_Task1_v2
                     {
                         if (planets[currentPlanet].colonies[currentColony].IsSelected)
                         {
-                            planets[currentPlanet].colonies[currentColony].CreateSawmill(
-                                inputBuildingName.Text, budget);
+                            planets[currentPlanet].colonies[currentColony].CreateBuilding<Sawmill>
+                               (planets[currentPlanet].Storage, 20, 100);
                             break;
                         }
                     }

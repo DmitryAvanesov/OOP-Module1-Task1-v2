@@ -6,10 +6,6 @@ namespace OOP_Module1_Task1_v2
     {
         public override string Name => "Gold";
 
-        public Gold()
-        {
-            Random random = new Random();
-            Amount = random.Next(1, 3);
-        }
+        public Gold(int newAmount) : base(newAmount) { }
     }
 }

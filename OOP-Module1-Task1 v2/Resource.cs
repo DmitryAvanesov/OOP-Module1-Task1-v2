@@ -4,5 +4,10 @@
     {
         public abstract string Name { get; }
         public int Amount { get; set; }
+
+        public Resource(int newAmount)
+        {
+            Amount = newAmount;
+        }
     }
 }

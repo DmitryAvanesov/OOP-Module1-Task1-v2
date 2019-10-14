@@ -11,6 +11,9 @@ namespace OOP_Module1_Task1_v2
         {
             Gold gold = GetResource<Gold>();
             Wood wood = GetResource<Wood>();
+
+            resources[typeof(Gold)] = new Gold(200);
+            resources[typeof(Wood)] = new Wood(300);
         }
 
         public T GetResource<T>()
