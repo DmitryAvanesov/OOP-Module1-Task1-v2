@@ -10,18 +10,21 @@ namespace OOP_Module1_Task1_v2
         public bool IsSelected { get; set; }
         public string Name { get; }
         public int Radius { get; }
-        private int labelPosition;
         public Label Label { get; set; }
-        public Panel ColoniesPanel { get; set; }
-        public Panel BuildingsPanel { get; set; }
+
+        private Panel coloniesPanel;
+        private Panel buildingsPanel;
 
         public List<Colony> colonies = new List<Colony>();
         private List<Resource> resources = new List<Resource>();
+        private int labelPosition;
 
-        public Planet(string newName)
+        public Planet(string newName, Panel newColoniesPanel, Panel newBuildingsPanel)
         {
             IsSelected = false;
             Name = newName;
+            coloniesPanel = newColoniesPanel;
+            buildingsPanel = newBuildingsPanel;
 
             Random random = new Random();
             coordinates = new Coordinates(random.Next(-10000, 10000), random.Next(-10000, 10000));
@@ -31,9 +34,9 @@ namespace OOP_Module1_Task1_v2
         public void Unselect()
         {
             IsSelected = false;
-            Label.BackColor = System.Drawing.Color.Transparent;
-            ColoniesPanel.Controls.Clear();
-            BuildingsPanel.Controls.Clear();
+            Label.BackColor = Color.Transparent;
+            coloniesPanel.Controls.Clear();
+            buildingsPanel.Controls.Clear();
 
             for (int currentColony = 0; currentColony < colonies.Count; currentColony++)
             {
@@ -48,7 +51,7 @@ namespace OOP_Module1_Task1_v2
         public void Select()
         {
             IsSelected = true;
-            Label.BackColor = System.Drawing.Color.Beige;
+            Label.BackColor = Color.Beige;
             ShowColonies();
         }
 
@@ -73,7 +76,7 @@ namespace OOP_Module1_Task1_v2
                 colonies[currentColony].Label = colonyLabel;
 
                 labelPosition += 30;
-                ColoniesPanel.Controls.Add(colonyLabel);
+                coloniesPanel.Controls.Add(colonyLabel);
             }
         }
 
@@ -90,14 +93,7 @@ namespace OOP_Module1_Task1_v2
                 }
             }
 
-            for (int currentColony = 0; currentColony < colonies.Count; currentColony++)
-            {
-                if (currentColony == int.Parse(colonyLabel.Name))
-                {
-                    colonies[currentColony].Select();
-                    break;
-                }
-            }
+            colonies[int.Parse(colonyLabel.Name)].Select();
         }
 
         public void CreateColony(string colonyName)
@@ -116,13 +112,13 @@ namespace OOP_Module1_Task1_v2
             };
 
             colonies[colonies.Count - 1].Label = colonyLabel;
-            colonies[colonies.Count - 1].ColoniesPanel = ColoniesPanel;
-            colonies[colonies.Count - 1].BuildingsPanel = BuildingsPanel;
+            colonies[colonies.Count - 1].ColoniesPanel = coloniesPanel;
+            colonies[colonies.Count - 1].BuildingsPanel = buildingsPanel;
 
             colonyLabel.Click += new EventHandler(SelectColony);
 
             labelPosition += 30;
-            ColoniesPanel.Controls.Add(colonyLabel);
+            coloniesPanel.Controls.Add(colonyLabel);
         }
     }
 }

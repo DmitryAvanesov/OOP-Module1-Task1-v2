@@ -9,8 +9,8 @@ namespace OOP_Module1_Task1_v2
 
         public Storage()
         {
-            var gold = GetResource<Gold>();
-            var wood = GetResource<Wood>();
+            Gold gold = GetResource<Gold>();
+            Wood wood = GetResource<Wood>();
         }
 
         public T GetResource<T>()

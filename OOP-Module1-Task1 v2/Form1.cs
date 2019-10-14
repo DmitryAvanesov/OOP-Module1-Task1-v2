@@ -10,6 +10,7 @@ namespace OOP_Module1_Task1_v2
         private readonly List<Planet> planets = new List<Planet>();
         private int labelPosition;
         private Budget budget;
+        private int selectedPlanet = 0;
 
         public Form1()
         {
@@ -26,28 +27,26 @@ namespace OOP_Module1_Task1_v2
 
         public void AddPlanet(string name)
         {
-            planets.Add(new Planet(name));
+            Planet newPlanet = new Planet(name, coloniesPanel, buildingsPanel);
 
             Label planetLabel = new Label
             {
                 Text = string.Format("{0} | {1} km radius | x: {2}; y: {3}",
-                planets[planets.Count - 1].Name,
-                planets[planets.Count - 1].Radius,
-                planets[planets.Count - 1].coordinates.X,
-                planets[planets.Count - 1].coordinates.Y),
+                newPlanet.Name,
+                newPlanet.Radius,
+                newPlanet.coordinates.X,
+                newPlanet.coordinates.Y),
 
                 Location = new Point(10, labelPosition),
                 AutoSize = true,
-                Name = (planets.Count - 1).ToString(),
+                Name = planets.Count.ToString(),
                 Font = new Font("Arial", 14)
             };
 
-            planets[planets.Count - 1].Label = planetLabel;
-            planets[planets.Count - 1].ColoniesPanel = coloniesPanel;
-            planets[planets.Count - 1].BuildingsPanel = buildingsPanel;
-
             planetLabel.Click += new EventHandler(SelectPlanet);
+            newPlanet.Label = planetLabel;
 
+            planets.Add(newPlanet);
             labelPosition += 30;
             planetsPanel.Controls.Add(planetLabel);
         }
@@ -55,24 +54,9 @@ namespace OOP_Module1_Task1_v2
         private void SelectPlanet(object sender, EventArgs e)
         {
             Label planetLabel = sender as Label;
-
-            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
-            {
-                if (planets[currentPlanet].IsSelected)
-                {
-                    planets[currentPlanet].Unselect();
-                    break;
-                }
-            }
-
-            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
-            {
-                if (currentPlanet == int.Parse(planetLabel.Name))
-                {
-                    planets[currentPlanet].Select();
-                    break;
-                }
-            }
+            planets[selectedPlanet].Unselect();
+            selectedPlanet = int.Parse(planetLabel.Name);
+            planets[selectedPlanet].Select();
         }
 
         private void AddPlanetButton_Click(object sender, EventArgs e)
