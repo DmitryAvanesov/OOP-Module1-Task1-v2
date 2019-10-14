@@ -11,30 +11,35 @@ namespace OOP_Module1_Task1_v2
         public string Name { get; }
         public int Radius { get; }
         public Label Label { get; set; }
+        public int SelectedColony { get; private set; }
+        public Storage Storage { get; }
 
         private readonly Panel coloniesPanel;
         private readonly Panel buildingsPanel;
-
+        private readonly Panel resourcesPanel;
         public List<Colony> colonies = new List<Colony>();
-        private int selectedColony = 0;
-        public Dictionary<Type, Resource> resources = new Dictionary<Type, Resource>();
-        public Storage Storage { get; }
-
+        public Dictionary<Type, Resource> planetResources = new Dictionary<Type, Resource>();
         private int labelPosition;
 
-        public Planet(string newName, Panel newColoniesPanel, Panel newBuildingsPanel)
+        public Planet(string newName, Panel newColoniesPanel,
+            Panel newBuildingsPanel, Panel newResourcesPanel)
         {
             IsSelected = false;
             Name = newName;
             coloniesPanel = newColoniesPanel;
             buildingsPanel = newBuildingsPanel;
+            resourcesPanel = newResourcesPanel;
 
             Random random = new Random();
             coordinates = new Coordinates(random.Next(-10000, 10000), random.Next(-10000, 10000));
             Radius = random.Next(10, 1000);
 
-            resources[typeof(Gold)] = new Gold(Radius);
-            resources[typeof(Wood)] = new Wood(Radius * 2);
+            planetResources[typeof(Gold)] = new Gold(Radius);
+            planetResources[typeof(Wood)] = new Wood(Radius * 2);
+
+            Storage = new Storage(400, 900, resourcesPanel);
+            Storage.resources[typeof(Gold)] = new Gold(400);
+            Storage.resources[typeof(Wood)] = new Wood(900);
         }
 
         public void Unselect()
@@ -46,7 +51,7 @@ namespace OOP_Module1_Task1_v2
 
             if (colonies.Count > 0)
             {
-                colonies[selectedColony].Unselect();
+                colonies[SelectedColony].Unselect();
             }
         }
 
@@ -85,34 +90,32 @@ namespace OOP_Module1_Task1_v2
         private void SelectColony(object sender, EventArgs e)
         {
             Label colonyLabel = sender as Label;
-            colonies[selectedColony].Unselect();
-            selectedColony = int.Parse(colonyLabel.Name);
-            colonies[selectedColony].Select();
+            colonies[SelectedColony].Unselect();
+            SelectedColony = int.Parse(colonyLabel.Name);
+            colonies[SelectedColony].Select();
         }
 
         public void CreateColony(string colonyName)
         {
-            colonies.Add(new Colony(colonyName));
+            Colony newColony = new Colony(colonyName, buildingsPanel);
 
             Label colonyLabel = new Label
             {
                 Text = string.Format("{0}",
-                colonies[colonies.Count - 1].name),
+                newColony.name),
 
                 Location = new Point(10, labelPosition),
                 AutoSize = true,
-                Name = (colonies.Count - 1).ToString(),
+                Name = colonies.Count.ToString(),
                 Font = new Font("Arial", 14)
             };
 
-            colonies[colonies.Count - 1].Label = colonyLabel;
-            colonies[colonies.Count - 1].ColoniesPanel = coloniesPanel;
-            colonies[colonies.Count - 1].BuildingsPanel = buildingsPanel;
-
             colonyLabel.Click += new EventHandler(SelectColony);
+            newColony.Label = colonyLabel;
 
-            labelPosition += 30;
+            colonies.Add(newColony);
             coloniesPanel.Controls.Add(colonyLabel);
+            labelPosition += 30;
         }
     }
 }

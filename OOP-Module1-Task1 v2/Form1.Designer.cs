@@ -38,10 +38,9 @@
             this.inputBuildingName = new System.Windows.Forms.TextBox();
             this.addColonyButton = new System.Windows.Forms.Button();
             this.addGoldmineButton = new System.Windows.Forms.Button();
-            this.goldLabel = new System.Windows.Forms.Label();
-            this.woodLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.resourcesPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // coloniesPanel
@@ -49,7 +48,7 @@
             this.coloniesPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.coloniesPanel.Location = new System.Drawing.Point(638, 75);
             this.coloniesPanel.Name = "coloniesPanel";
-            this.coloniesPanel.Size = new System.Drawing.Size(620, 863);
+            this.coloniesPanel.Size = new System.Drawing.Size(620, 764);
             this.coloniesPanel.TabIndex = 1;
             // 
             // buildingsPanel
@@ -57,7 +56,7 @@
             this.buildingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buildingsPanel.Location = new System.Drawing.Point(1264, 75);
             this.buildingsPanel.Name = "buildingsPanel";
-            this.buildingsPanel.Size = new System.Drawing.Size(620, 863);
+            this.buildingsPanel.Size = new System.Drawing.Size(620, 764);
             this.buildingsPanel.TabIndex = 2;
             // 
             // inputPlanetName
@@ -85,7 +84,7 @@
             this.planetsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.planetsPanel.Location = new System.Drawing.Point(12, 75);
             this.planetsPanel.Name = "planetsPanel";
-            this.planetsPanel.Size = new System.Drawing.Size(620, 863);
+            this.planetsPanel.Size = new System.Drawing.Size(620, 764);
             this.planetsPanel.TabIndex = 0;
             // 
             // inputColonyName
@@ -139,28 +138,10 @@
             this.addGoldmineButton.UseVisualStyleBackColor = true;
             this.addGoldmineButton.Click += new System.EventHandler(this.AddGoldmineButton_Click);
             // 
-            // goldLabel
-            // 
-            this.goldLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.goldLabel.Location = new System.Drawing.Point(12, 950);
-            this.goldLabel.Name = "goldLabel";
-            this.goldLabel.Size = new System.Drawing.Size(1500, 35);
-            this.goldLabel.TabIndex = 18;
-            this.goldLabel.Text = "Gold: 0";
-            // 
-            // woodLabel
-            // 
-            this.woodLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.woodLabel.Location = new System.Drawing.Point(12, 985);
-            this.woodLabel.Name = "woodLabel";
-            this.woodLabel.Size = new System.Drawing.Size(1500, 35);
-            this.woodLabel.TabIndex = 19;
-            this.woodLabel.Text = "Wood: 0";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1556, 55);
+            this.label1.Location = new System.Drawing.Point(1554, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 17);
             this.label1.TabIndex = 20;
@@ -169,21 +150,27 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1739, 55);
+            this.label2.Location = new System.Drawing.Point(1739, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 17);
             this.label2.TabIndex = 21;
             this.label2.Text = "20 gold | 100 wood";
+            // 
+            // resourcesPanel
+            // 
+            this.resourcesPanel.Location = new System.Drawing.Point(12, 845);
+            this.resourcesPanel.Name = "resourcesPanel";
+            this.resourcesPanel.Size = new System.Drawing.Size(1872, 178);
+            this.resourcesPanel.TabIndex = 22;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1035);
+            this.Controls.Add(this.resourcesPanel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.woodLabel);
-            this.Controls.Add(this.goldLabel);
             this.Controls.Add(this.addGoldmineButton);
             this.Controls.Add(this.addSawmillButton);
             this.Controls.Add(this.inputBuildingName);
@@ -213,10 +200,9 @@
         private System.Windows.Forms.TextBox inputBuildingName;
         private System.Windows.Forms.Button addColonyButton;
         private System.Windows.Forms.Button addGoldmineButton;
-        private System.Windows.Forms.Label goldLabel;
-        private System.Windows.Forms.Label woodLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel resourcesPanel;
     }
 }
 

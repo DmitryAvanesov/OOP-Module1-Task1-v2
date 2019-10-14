@@ -25,7 +25,7 @@ namespace OOP_Module1_Task1_v2
 
         public void AddPlanet(string name)
         {
-            Planet newPlanet = new Planet(name, coloniesPanel, buildingsPanel);
+            Planet newPlanet = new Planet(name, coloniesPanel, buildingsPanel, resourcesPanel);
 
             Label planetLabel = new Label
             {
@@ -76,42 +76,16 @@ namespace OOP_Module1_Task1_v2
 
         private void AddGoldmineButton_Click(object sender, EventArgs e)
         {
-            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
-            {
-                if (planets[currentPlanet].IsSelected)
-                {
-                    for (int currentColony = 0;
-                        currentColony < planets[currentPlanet].colonies.Count; currentColony++)
-                    {
-                        if (planets[currentPlanet].colonies[currentColony].IsSelected)
-                        {
-                            planets[currentPlanet].colonies[currentColony].CreateBuilding<Goldmine>
-                                (planets[currentPlanet].Storage, 50, 30);
-                            break;
-                        }
-                    }
-                }
-            }
+            planets[selectedPlanet].colonies
+                [planets[selectedPlanet].SelectedColony].CreateBuilding<Goldmine>
+                (planets[selectedPlanet].Storage, 50, 30);
         }
 
         private void AddSawmillButton_Click(object sender, EventArgs e)
         {
-            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
-            {
-                if (planets[currentPlanet].IsSelected)
-                {
-                    for (int currentColony = 0;
-                        currentColony < planets[currentPlanet].colonies.Count; currentColony++)
-                    {
-                        if (planets[currentPlanet].colonies[currentColony].IsSelected)
-                        {
-                            planets[currentPlanet].colonies[currentColony].CreateBuilding<Sawmill>
-                               (planets[currentPlanet].Storage, 20, 100);
-                            break;
-                        }
-                    }
-                }
-            }
+            planets[selectedPlanet].colonies
+                [planets[selectedPlanet].SelectedColony].CreateBuilding<Sawmill>
+                (planets[selectedPlanet].Storage, 50, 30);
         }
     }
 }

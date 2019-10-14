@@ -5,20 +5,12 @@ namespace OOP_Module1_Task1_v2
 {
     class Sawmill : Building
     {
-        public Sawmill()
+        public Sawmill() : base() { }
+
+        public override void GetResource(object sender, EventArgs e)
         {
             Random random = new Random();
-            coordinates = new Coordinates(random.Next(-100, 100), random.Next(-100, 100));
-
-            timer = new Timer();
-            timer.Tick += new EventHandler(GetWood);
-            timer.Interval = interval;
-            timer.Start();
-        }
-
-        public void GetWood(object sender, EventArgs e)
-        {
-            
+            Storage.Earn<Wood>(random.Next(2, 8));
         }
     }
 }

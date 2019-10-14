@@ -10,21 +10,22 @@ namespace OOP_Module1_Task1_v2
         private readonly List<Building> buildings = new List<Building>();
         public bool IsSelected { get; set; }
         public Label Label { get; set; }
-        private int labelPosition = 10;
-        public Panel ColoniesPanel { get; set; }
-        public Panel BuildingsPanel { get; set; }
 
-        public Colony(string colonyName)
+        private int labelPosition = 10;
+        private Panel buildingsPanel;
+
+        public Colony(string colonyName, Panel newBuildingsPanel)
         {
             IsSelected = false;
             name = colonyName;
+            buildingsPanel = newBuildingsPanel;
         }
 
         public void Unselect()
         {
             IsSelected = false;
             Label.BackColor = Color.Transparent;
-            BuildingsPanel.Controls.Clear();
+            buildingsPanel.Controls.Clear();
         }
 
         public void Select()
@@ -40,7 +41,10 @@ namespace OOP_Module1_Task1_v2
             if (storage.GetResource<Gold>().Amount >= goldCost &&
                 storage.GetResource<Wood>().Amount >= woodCost)
             {
-                T newBuilding = new T();
+                T newBuilding = new T
+                {
+                    Storage = storage
+                };
 
                 Label buildingLabel = new Label
                 {
@@ -55,8 +59,11 @@ namespace OOP_Module1_Task1_v2
                 };
 
                 buildings.Add(newBuilding);
-                BuildingsPanel.Controls.Add(buildingLabel);
+                buildingsPanel.Controls.Add(buildingLabel);
                 labelPosition += 30;
+
+                storage.Pay<Gold>(goldCost);
+                storage.Pay<Wood>(woodCost);
             }
         }
 
@@ -79,7 +86,7 @@ namespace OOP_Module1_Task1_v2
                 };
 
                 labelPosition += 30;
-                BuildingsPanel.Controls.Add(buildingLabel);
+                buildingsPanel.Controls.Add(buildingLabel);
             }
         }
     }
