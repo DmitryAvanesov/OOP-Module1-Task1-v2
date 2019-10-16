@@ -7,8 +7,9 @@ namespace OOP_Module1_Task1_v2
 {
     class Storage
     {
-        public Dictionary<Type, Resource> resources = new Dictionary<Type, Resource>();
         public Panel ResourcesPanel { get; }
+
+        public Dictionary<Type, Resource> resources = new Dictionary<Type, Resource>();
         private int labelPosition;
 
         public Storage(int goldAmount, int woodAmount, Panel newResourcesPanel)

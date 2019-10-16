@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.resourcesPanel = new System.Windows.Forms.Panel();
+            this.planetResourcesPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // coloniesPanel
@@ -158,16 +159,28 @@
             // 
             // resourcesPanel
             // 
-            this.resourcesPanel.Location = new System.Drawing.Point(12, 845);
+            this.resourcesPanel.BackColor = System.Drawing.Color.LightYellow;
+            this.resourcesPanel.Location = new System.Drawing.Point(12, 844);
+            this.resourcesPanel.Margin = new System.Windows.Forms.Padding(2);
             this.resourcesPanel.Name = "resourcesPanel";
-            this.resourcesPanel.Size = new System.Drawing.Size(1872, 178);
+            this.resourcesPanel.Size = new System.Drawing.Size(309, 178);
             this.resourcesPanel.TabIndex = 22;
+            // 
+            // planetResourcesPanel
+            // 
+            this.planetResourcesPanel.BackColor = System.Drawing.Color.LightYellow;
+            this.planetResourcesPanel.Location = new System.Drawing.Point(323, 844);
+            this.planetResourcesPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.planetResourcesPanel.Name = "planetResourcesPanel";
+            this.planetResourcesPanel.Size = new System.Drawing.Size(309, 178);
+            this.planetResourcesPanel.TabIndex = 23;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1035);
+            this.Controls.Add(this.planetResourcesPanel);
             this.Controls.Add(this.resourcesPanel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -203,6 +216,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel resourcesPanel;
+        private System.Windows.Forms.Panel planetResourcesPanel;
     }
 }
 

@@ -17,30 +17,34 @@ namespace OOP_Module1_Task1_v2
         private readonly Panel coloniesPanel;
         private readonly Panel buildingsPanel;
         private readonly Panel resourcesPanel;
+        private readonly Panel planetResourcesPanel;
         public List<Colony> colonies = new List<Colony>();
         public Dictionary<Type, Resource> planetResources = new Dictionary<Type, Resource>();
-        private int labelPosition;
+        public int labelPosition;
 
         public Planet(string newName, Panel newColoniesPanel,
-            Panel newBuildingsPanel, Panel newResourcesPanel)
+            Panel newBuildingsPanel, Panel newResourcesPanel,
+            Panel newPlanetResourcesPanel)
         {
             IsSelected = false;
             Name = newName;
             coloniesPanel = newColoniesPanel;
             buildingsPanel = newBuildingsPanel;
             resourcesPanel = newResourcesPanel;
+            planetResourcesPanel = newPlanetResourcesPanel;
             SelectedColony = -1;
+            labelPosition = 10;
 
             Random random = new Random();
             coordinates = new Coordinates(random.Next(-10000, 10000), random.Next(-10000, 10000));
-            Radius = random.Next(10, 1000);
+            Radius = random.Next(100, 1000);
 
-            planetResources[typeof(Gold)] = new Gold(Radius);
-            planetResources[typeof(Wood)] = new Wood(Radius * 2);
+            planetResources[typeof(Gold)] = new Gold(Radius +
+                random.Next(-Radius / 3, Radius / 3));
+            planetResources[typeof(Wood)] = new Wood(Radius +
+                random.Next(-Radius / 2, Radius / 2));
 
             Storage = new Storage(400, 900, resourcesPanel);
-            Storage.resources[typeof(Gold)] = new Gold(400);
-            Storage.resources[typeof(Wood)] = new Wood(900);
         }
 
         public void Unselect()
@@ -63,6 +67,7 @@ namespace OOP_Module1_Task1_v2
             Label.BackColor = Color.Beige;
             ShowColonies();
             Storage.ShowResources();
+            ShowPlanetResources();
         }
 
         public void CreateColony(string colonyName)
@@ -123,6 +128,33 @@ namespace OOP_Module1_Task1_v2
             }
             SelectedColony = int.Parse(colonyLabel.Name);
             colonies[SelectedColony].Select();
+        }
+
+        public void ExtractResources<T>(int amount)
+        {
+            planetResources[typeof(T)].Amount -= amount;
+        }
+
+        public void ShowPlanetResources()
+        {
+            planetResourcesPanel.Controls.Clear();
+            labelPosition = 10;
+
+            foreach (var resource in planetResources)
+            {
+                Label resourcesLabel = new Label
+                {
+                    Text = string.Format("({0} more left)",
+                    resource.Value.Amount),
+
+                    Location = new Point(10, labelPosition),
+                    AutoSize = true,
+                    Font = new Font("Arial", 14)
+                };
+
+                planetResourcesPanel.Controls.Add(resourcesLabel);
+                labelPosition += 30;
+            }
         }
     }
 }

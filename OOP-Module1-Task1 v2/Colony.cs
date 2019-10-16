@@ -6,14 +6,14 @@ namespace OOP_Module1_Task1_v2
 {
     class Colony : ISelectableObject
     {
-        public string name;
-        private readonly List<Building> buildings = new List<Building>();
         public bool IsSelected { get; set; }
         public Label Label { get; set; }
 
+        public string name;
+        private readonly List<Building> buildings = new List<Building>();
         private int labelPosition;
         private readonly Panel buildingsPanel;
-        private Planet planet;
+        private readonly Planet planet;
 
         public Colony(string colonyName, Panel newBuildingsPanel, Planet thisPlanet)
         {
