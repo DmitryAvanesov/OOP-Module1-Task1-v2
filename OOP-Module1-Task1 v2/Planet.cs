@@ -29,6 +29,7 @@ namespace OOP_Module1_Task1_v2
             coloniesPanel = newColoniesPanel;
             buildingsPanel = newBuildingsPanel;
             resourcesPanel = newResourcesPanel;
+            SelectedColony = -1;
 
             Random random = new Random();
             coordinates = new Coordinates(random.Next(-10000, 10000), random.Next(-10000, 10000));
@@ -49,9 +50,10 @@ namespace OOP_Module1_Task1_v2
             coloniesPanel.Controls.Clear();
             buildingsPanel.Controls.Clear();
 
-            if (colonies.Count > 0)
+            if (SelectedColony != -1)
             {
                 colonies[SelectedColony].Unselect();
+                SelectedColony = -1;
             }
         }
 
@@ -60,6 +62,30 @@ namespace OOP_Module1_Task1_v2
             IsSelected = true;
             Label.BackColor = Color.Beige;
             ShowColonies();
+            Storage.ShowResources();
+        }
+
+        public void CreateColony(string colonyName)
+        {
+            Colony newColony = new Colony(colonyName, buildingsPanel, this);
+
+            Label colonyLabel = new Label
+            {
+                Text = string.Format("{0}",
+                newColony.name),
+
+                Location = new Point(10, labelPosition),
+                AutoSize = true,
+                Name = colonies.Count.ToString(),
+                Font = new Font("Arial", 14)
+            };
+
+            colonyLabel.Click += new EventHandler(SelectColony);
+            newColony.Label = colonyLabel;
+
+            colonies.Add(newColony);
+            coloniesPanel.Controls.Add(colonyLabel);
+            labelPosition += 30;
         }
 
         private void ShowColonies()
@@ -90,32 +116,13 @@ namespace OOP_Module1_Task1_v2
         private void SelectColony(object sender, EventArgs e)
         {
             Label colonyLabel = sender as Label;
-            colonies[SelectedColony].Unselect();
+
+            if (SelectedColony != -1)
+            {
+                colonies[SelectedColony].Unselect();
+            }
             SelectedColony = int.Parse(colonyLabel.Name);
             colonies[SelectedColony].Select();
-        }
-
-        public void CreateColony(string colonyName)
-        {
-            Colony newColony = new Colony(colonyName, buildingsPanel);
-
-            Label colonyLabel = new Label
-            {
-                Text = string.Format("{0}",
-                newColony.name),
-
-                Location = new Point(10, labelPosition),
-                AutoSize = true,
-                Name = colonies.Count.ToString(),
-                Font = new Font("Arial", 14)
-            };
-
-            colonyLabel.Click += new EventHandler(SelectColony);
-            newColony.Label = colonyLabel;
-
-            colonies.Add(newColony);
-            coloniesPanel.Controls.Add(colonyLabel);
-            labelPosition += 30;
         }
     }
 }

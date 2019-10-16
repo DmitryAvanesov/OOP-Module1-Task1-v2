@@ -8,7 +8,7 @@ namespace OOP_Module1_Task1_v2
     class Storage
     {
         public Dictionary<Type, Resource> resources = new Dictionary<Type, Resource>();
-        private Panel resourcesPanel;
+        public Panel ResourcesPanel { get; }
         private int labelPosition;
 
         public Storage(int goldAmount, int woodAmount, Panel newResourcesPanel)
@@ -16,8 +16,7 @@ namespace OOP_Module1_Task1_v2
             resources[typeof(Gold)] = new Gold(goldAmount);
             resources[typeof(Wood)] = new Wood(woodAmount);
 
-            resourcesPanel = newResourcesPanel;
-            ShowResources();
+            ResourcesPanel = newResourcesPanel;
         }
 
         public T GetResource<T>()
@@ -35,17 +34,15 @@ namespace OOP_Module1_Task1_v2
         public void Earn<T>(int sum)
         {
             resources[typeof(T)].Amount += sum;
-            ShowResources();
         }
 
         public void ShowResources()
         {
-            resourcesPanel.Controls.Clear();
+            ResourcesPanel.Controls.Clear();
+            labelPosition = 10;
 
             foreach (var resource in resources)
             {
-                labelPosition = 850;
-
                 Label resourcesLabel = new Label
                 {
                     Text = string.Format("{0}: {1}",
@@ -57,7 +54,7 @@ namespace OOP_Module1_Task1_v2
                     Font = new Font("Arial", 14)
                 };
 
-                resourcesPanel.Controls.Add(resourcesLabel);
+                ResourcesPanel.Controls.Add(resourcesLabel);
                 labelPosition += 30;
             }
         }

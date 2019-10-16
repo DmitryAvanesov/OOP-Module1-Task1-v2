@@ -11,14 +11,17 @@ namespace OOP_Module1_Task1_v2
         public bool IsSelected { get; set; }
         public Label Label { get; set; }
 
-        private int labelPosition = 10;
-        private Panel buildingsPanel;
+        private int labelPosition;
+        private readonly Panel buildingsPanel;
+        private Planet planet;
 
-        public Colony(string colonyName, Panel newBuildingsPanel)
+        public Colony(string colonyName, Panel newBuildingsPanel, Planet thisPlanet)
         {
             IsSelected = false;
             name = colonyName;
             buildingsPanel = newBuildingsPanel;
+            labelPosition = 10;
+            planet = thisPlanet;
         }
 
         public void Unselect()
@@ -43,12 +46,14 @@ namespace OOP_Module1_Task1_v2
             {
                 T newBuilding = new T
                 {
-                    Storage = storage
+                    Storage = storage,
+                    Planet = planet
                 };
 
                 Label buildingLabel = new Label
                 {
-                    Text = string.Format("Goldmine | x: {0}; y: {1}",
+                    Text = string.Format("{0} | x: {1}; y: {2}",
+                    newBuilding.Name,
                     newBuilding.coordinates.X,
                     newBuilding.coordinates.Y),
 
@@ -75,7 +80,8 @@ namespace OOP_Module1_Task1_v2
             {
                 Label buildingLabel = new Label
                 {
-                    Text = string.Format("x: {0}; y: {1}",
+                    Text = string.Format("{0} | x: {1}; y: {2}",
+                    buildings[currentBuilding].Name,
                     buildings[currentBuilding].coordinates.X,
                     buildings[currentBuilding].coordinates.Y),
 

@@ -5,7 +5,9 @@ namespace OOP_Module1_Task1_v2
 {
     abstract class Building : MapObject
     {
+        public abstract string Name { get; }
         public Storage Storage { get; set; }
+        public Planet Planet { get; set; }
 
         protected Timer timer;
         protected int interval = 5000;

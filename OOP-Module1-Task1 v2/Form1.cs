@@ -9,7 +9,7 @@ namespace OOP_Module1_Task1_v2
     {
         private readonly List<Planet> planets = new List<Planet>();
         private int labelPosition;
-        private int selectedPlanet;
+        private int selectedPlanet = -1;
 
         public Form1()
         {
@@ -52,7 +52,11 @@ namespace OOP_Module1_Task1_v2
         private void SelectPlanet(object sender, EventArgs e)
         {
             Label planetLabel = sender as Label;
-            planets[selectedPlanet].Unselect();
+
+            if (selectedPlanet != -1)
+            {
+                planets[selectedPlanet].Unselect();
+            }
             selectedPlanet = int.Parse(planetLabel.Name);
             planets[selectedPlanet].Select();
         }
@@ -76,16 +80,22 @@ namespace OOP_Module1_Task1_v2
 
         private void AddGoldmineButton_Click(object sender, EventArgs e)
         {
-            planets[selectedPlanet].colonies
-                [planets[selectedPlanet].SelectedColony].CreateBuilding<Goldmine>
-                (planets[selectedPlanet].Storage, 50, 30);
+            if (selectedPlanet != -1 && planets[selectedPlanet].SelectedColony != -1)
+            {
+                planets[selectedPlanet].colonies
+                    [planets[selectedPlanet].SelectedColony].CreateBuilding<Goldmine>
+                    (planets[selectedPlanet].Storage, 50, 30);
+            }
         }
 
         private void AddSawmillButton_Click(object sender, EventArgs e)
         {
-            planets[selectedPlanet].colonies
-                [planets[selectedPlanet].SelectedColony].CreateBuilding<Sawmill>
-                (planets[selectedPlanet].Storage, 50, 30);
+            if (selectedPlanet != -1 && planets[selectedPlanet].SelectedColony != -1)
+            {
+                planets[selectedPlanet].colonies
+                    [planets[selectedPlanet].SelectedColony].CreateBuilding<Sawmill>
+                    (planets[selectedPlanet].Storage, 20, 100);
+            }
         }
     }
 }
