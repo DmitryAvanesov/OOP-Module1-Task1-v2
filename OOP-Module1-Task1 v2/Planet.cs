@@ -20,7 +20,7 @@ namespace OOP_Module1_Task1_v2
         private readonly Panel planetResourcesPanel;
         public List<Colony> colonies = new List<Colony>();
         public Dictionary<Type, Resource> planetResources = new Dictionary<Type, Resource>();
-        public int labelPosition;
+        private int labelPosition;
 
         public Planet(string newName, Panel newColoniesPanel,
             Panel newBuildingsPanel, Panel newResourcesPanel,
@@ -138,7 +138,7 @@ namespace OOP_Module1_Task1_v2
         public void ShowPlanetResources()
         {
             planetResourcesPanel.Controls.Clear();
-            labelPosition = 10;
+            int resourceLabelPosition = 10;
 
             foreach (var resource in planetResources)
             {
@@ -147,13 +147,13 @@ namespace OOP_Module1_Task1_v2
                     Text = string.Format("({0} more left)",
                     resource.Value.Amount),
 
-                    Location = new Point(10, labelPosition),
+                    Location = new Point(10, resourceLabelPosition),
                     AutoSize = true,
                     Font = new Font("Arial", 14)
                 };
 
                 planetResourcesPanel.Controls.Add(resourcesLabel);
-                labelPosition += 30;
+                resourceLabelPosition += 30;
             }
         }
     }

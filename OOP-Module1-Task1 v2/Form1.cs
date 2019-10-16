@@ -11,10 +11,6 @@ namespace OOP_Module1_Task1_v2
         private int labelPosition;
         private int selectedPlanet = -1;
 
-
-        protected Timer timer;
-        protected int interval = 100;
-
         public Form1()
         {
             InitializeComponent();
@@ -25,28 +21,6 @@ namespace OOP_Module1_Task1_v2
             WindowState = FormWindowState.Maximized;
 
             labelPosition = 10;
-
-
-            timer = new Timer();
-            timer.Tick += new EventHandler(Test);
-            timer.Interval = interval;
-            timer.Start();
-        }
-
-        public void Test(object sender, EventArgs e)
-        {
-            if (selectedPlanet != -1)
-            {
-                Controls.Add(new Label
-                {
-                    Text = string.Format("{0}",
-                    planets[selectedPlanet].colonies.Count),
-
-                    Location = new Point(900, 900),
-                    AutoSize = true,
-                    Font = new Font("Arial", 14)
-                });
-            }
         }
 
         public void AddPlanet(string name)
@@ -95,13 +69,9 @@ namespace OOP_Module1_Task1_v2
 
         private void AddColonyButton_Click(object sender, EventArgs e)
         {
-            for (int currentPlanet = 0; currentPlanet < planets.Count; currentPlanet++)
+            if (selectedPlanet != -1)
             {
-                if (planets[currentPlanet].IsSelected)
-                {
-                    planets[currentPlanet].CreateColony(inputColonyName.Text);
-                    break;
-                }
+                planets[selectedPlanet].CreateColony(inputColonyName.Text);
             }
         }
 
