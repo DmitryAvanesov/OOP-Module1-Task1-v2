@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
 {
     class ResourceBox
     {
-        public Panel ResourcesPanel { get; }
-
         private readonly UserInterface _formUI;
-        public Dictionary<Type, Resource> resources = new Dictionary<Type, Resource>();
+        public Dictionary<Type, Resource> resources;
 
         public ResourceBox(int goldAmount, int woodAmount, UserInterface thisUI)
         {
-            resources[typeof(Gold)] = new Gold(goldAmount);
-            resources[typeof(Wood)] = new Wood(woodAmount);
+            resources = new Dictionary<Type, Resource>
+            {
+                [typeof(Gold)] = new Gold(goldAmount),
+                [typeof(Wood)] = new Wood(woodAmount)
+            };
 
             _formUI = thisUI;
         }

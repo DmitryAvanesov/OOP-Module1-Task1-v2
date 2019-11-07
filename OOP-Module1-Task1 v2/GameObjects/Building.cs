@@ -6,7 +6,7 @@ namespace OOP_Module1_Task1_v2
 {
     abstract class Building : MapObject
     {
-        const int Interval = 5000;
+        const int Interval = 1000;
         const int CoordinatesLimit = 100;
 
         public abstract string Name { get; }
@@ -39,7 +39,7 @@ namespace OOP_Module1_Task1_v2
             foreach (KeyValuePair<Type, Resource> currentResource in extraction.resources)
             {
                 if (currentResource.Value.Amount >
-                    Planet.planetResources[currentResource.Key].Amount)
+                    Planet.planetResources.resources[currentResource.Key].Amount)
                 {
                     enoughResources = false;
                 }
@@ -53,7 +53,7 @@ namespace OOP_Module1_Task1_v2
                 if (Planet.IsSelected)
                 {
                     FormUI.ShowResources(Planet.Storage.resources);
-                    FormUI.ShowPlanetResources(Planet.planetResources);
+                    FormUI.ShowPlanetResources(Planet.planetResources.resources);
                 }
             }
         }

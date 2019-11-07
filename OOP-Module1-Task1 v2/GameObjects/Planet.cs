@@ -27,7 +27,7 @@ namespace OOP_Module1_Task1_v2
 
         private readonly UserInterface _formUI;
         public IList<Colony> colonies;
-        public Dictionary<Type, Resource> planetResources;
+        public ResourceBox planetResources;
         private readonly ResourceBox _colonyCost;
 
         public Planet(string newName, UserInterface thisUI, int thisNumber, Form1 thisForm)
@@ -39,20 +39,20 @@ namespace OOP_Module1_Task1_v2
             Form = thisForm;
             SelectedColony = -1;
             colonies = new List<Colony>();
-            planetResources = new Dictionary<Type, Resource>();
-            _colonyCost = new ResourceBox(500, 500, _formUI);
 
             Random random = new Random();
+            Radius = random.Next(MinRadius, MaxRadius);
+
+            planetResources = new ResourceBox(
+                Radius / random.Next(MinGoldCoef, MaxGoldCoef),
+                Radius / random.Next(MinWoodCoef, MaxWoodCoef),
+                _formUI);
+
             coordinates = new Coordinates(
                 random.Next(-CoordinatesLimit, CoordinatesLimit),
                 random.Next(-CoordinatesLimit, CoordinatesLimit));
-            Radius = random.Next(MinRadius, MaxRadius);
 
-            planetResources[typeof(Gold)] =
-                new Gold(Radius / random.Next(MinGoldCoef, MaxGoldCoef));
-            planetResources[typeof(Wood)] =
-                new Wood(Radius / random.Next(MinWoodCoef, MaxWoodCoef));
-
+            _colonyCost = new ResourceBox(500, 500, _formUI);
             Storage = new ResourceBox(InitialGold, InitialWood, _formUI);
         }
 
@@ -76,7 +76,7 @@ namespace OOP_Module1_Task1_v2
 
             _formUI.ShowColonies(colonies);
             _formUI.ShowResources(Storage.resources);
-            _formUI.ShowPlanetResources(planetResources);
+            _formUI.ShowPlanetResources(planetResources.resources);
         }
 
         public void CreateColony(string colonyName)
@@ -117,7 +117,8 @@ namespace OOP_Module1_Task1_v2
         {
             foreach (KeyValuePair<Type, Resource> currentResource in value.resources)
             {
-                planetResources[currentResource.Key].Amount -= currentResource.Value.Amount;
+                planetResources.resources[currentResource.Key].Amount -=
+                    currentResource.Value.Amount;
             }
         }
     }
