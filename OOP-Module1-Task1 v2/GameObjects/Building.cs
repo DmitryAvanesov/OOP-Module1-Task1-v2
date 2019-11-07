@@ -6,18 +6,23 @@ namespace OOP_Module1_Task1_v2
 {
     abstract class Building : MapObject
     {
+        const int Interval = 5000;
+        const int CoordinatesLimit = 100;
+
         public abstract string Name { get; }
         public int Number { get; set; }
         public Planet Planet { get; set; }
 
         public UserInterface FormUI;
         protected Timer timer;
-        protected int interval = 5000;
+        protected int interval = Interval;
 
         public Building()
         {
             Random random = new Random();
-            coordinates = new Coordinates(random.Next(-100, 100), random.Next(-100, 100));
+            coordinates = new Coordinates(
+                random.Next(-CoordinatesLimit, CoordinatesLimit),
+                random.Next(-CoordinatesLimit, CoordinatesLimit));
 
             timer = new Timer();
             timer.Tick += new EventHandler(GetResource);

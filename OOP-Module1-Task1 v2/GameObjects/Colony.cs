@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
 {
@@ -11,7 +10,7 @@ namespace OOP_Module1_Task1_v2
         public bool IsSelected { get; set; }
         public Planet Planet { get; }
 
-        private readonly UserInterface formUI;
+        private readonly UserInterface _formUI;
         private readonly IList<Building> _buildings;
 
         public Colony(string colonyName, int colonyNumber,
@@ -20,7 +19,7 @@ namespace OOP_Module1_Task1_v2
             IsSelected = false;
             Name = colonyName;
             Number = colonyNumber;
-            formUI = thisUI;
+            _formUI = thisUI;
             Planet = thisPlanet;
             _buildings = new List<Building>();
         }
@@ -28,14 +27,14 @@ namespace OOP_Module1_Task1_v2
         public void Unselect()
         {
             IsSelected = false;
-            formUI.OnUnselectColony(Number);
+            _formUI.OnUnselectColony(Number);
         }
 
         public void Select()
         {
             IsSelected = true;
-            formUI.OnSelectColony(Number);
-            formUI.ShowBuildings(_buildings);
+            _formUI.OnSelectColony(Number);
+            _formUI.ShowBuildings(_buildings);
         }
 
         public void CreateBuilding<T>(ResourceBox value)
@@ -58,12 +57,12 @@ namespace OOP_Module1_Task1_v2
                 {
                     Planet = Planet,
                     Number = _buildings.Count,
-                    FormUI = formUI
+                    FormUI = _formUI
                 };
 
                 _buildings.Add(newBuilding);
                 Planet.Storage.Pay(value);
-                formUI.OnCreateBuilding(newBuilding);
+                _formUI.OnCreateBuilding(newBuilding);
             }
         }
     }

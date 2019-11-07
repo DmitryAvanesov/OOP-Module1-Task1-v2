@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
@@ -9,7 +8,7 @@ namespace OOP_Module1_Task1_v2
     {
         public Panel ResourcesPanel { get; }
 
-        private readonly UserInterface formUI;
+        private readonly UserInterface _formUI;
         public Dictionary<Type, Resource> resources = new Dictionary<Type, Resource>();
 
         public ResourceBox(int goldAmount, int woodAmount, UserInterface thisUI)
@@ -17,7 +16,7 @@ namespace OOP_Module1_Task1_v2
             resources[typeof(Gold)] = new Gold(goldAmount);
             resources[typeof(Wood)] = new Wood(woodAmount);
 
-            formUI = thisUI;
+            _formUI = thisUI;
         }
 
         public T GetResource<T>()
@@ -33,7 +32,7 @@ namespace OOP_Module1_Task1_v2
                 resources[currentResource.Key].Amount -= currentResource.Value.Amount;
             }
 
-            formUI.ShowResources(resources);
+            _formUI.ShowResources(resources);
         }
 
         public void Earn(ResourceBox value)

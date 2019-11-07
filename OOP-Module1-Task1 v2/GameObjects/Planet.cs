@@ -7,6 +7,16 @@ namespace OOP_Module1_Task1_v2
 {
     class Planet : MapObject, ISelectableObject
     {
+        const int CoordinatesLimit = 10000;
+        const int MinRadius = 1000;
+        const int MaxRadius = 1000000;
+        const int InitialGold = 750;
+        const int InitialWood = 1000;
+        const int MinGoldCoef = 10;
+        const int MaxGoldCoef = 1000;
+        const int MinWoodCoef = 50;
+        const int MaxWoodCoef = 500;
+
         public bool IsSelected { get; set; }
         public string Name { get; }
         public int Number { get; }
@@ -15,31 +25,35 @@ namespace OOP_Module1_Task1_v2
         public ResourceBox Storage { get; }
         public Form1 Form { get; }
 
-        private UserInterface formUI;
+        private readonly UserInterface _formUI;
         public IList<Colony> colonies;
         public Dictionary<Type, Resource> planetResources;
+        private readonly ResourceBox _colonyCost;
 
         public Planet(string newName, UserInterface thisUI, int thisNumber, Form1 thisForm)
         {
             IsSelected = false;
             Name = newName;
-            formUI = thisUI;
+            _formUI = thisUI;
             Number = thisNumber;
             Form = thisForm;
             SelectedColony = -1;
             colonies = new List<Colony>();
             planetResources = new Dictionary<Type, Resource>();
+            _colonyCost = new ResourceBox(500, 500, _formUI);
 
             Random random = new Random();
-            coordinates = new Coordinates(random.Next(-10000, 10000), random.Next(-10000, 10000));
-            Radius = random.Next(100, 1000);
+            coordinates = new Coordinates(
+                random.Next(-CoordinatesLimit, CoordinatesLimit),
+                random.Next(-CoordinatesLimit, CoordinatesLimit));
+            Radius = random.Next(MinRadius, MaxRadius);
 
-            planetResources[typeof(Gold)] = new Gold(Radius +
-                random.Next(-Radius / 3, Radius / 3));
-            planetResources[typeof(Wood)] = new Wood(Radius +
-                random.Next(-Radius / 2, Radius / 2));
+            planetResources[typeof(Gold)] =
+                new Gold(Radius / random.Next(MinGoldCoef, MaxGoldCoef));
+            planetResources[typeof(Wood)] =
+                new Wood(Radius / random.Next(MinWoodCoef, MaxWoodCoef));
 
-            Storage = new ResourceBox(100, 200, formUI);
+            Storage = new ResourceBox(InitialGold, InitialWood, _formUI);
         }
 
         public void Unselect()
@@ -52,24 +66,39 @@ namespace OOP_Module1_Task1_v2
                 SelectedColony = -1;
             }
 
-            formUI.OnUnselectPlanet(Number);
+            _formUI.OnUnselectPlanet(Number);
         }
 
         public void Select()
         {
             IsSelected = true;
-            formUI.OnSelectPlanet(Number);
+            _formUI.OnSelectPlanet(Number);
 
-            formUI.ShowColonies(colonies);
-            formUI.ShowResources(Storage.resources);
-            formUI.ShowPlanetResources(planetResources);
+            _formUI.ShowColonies(colonies);
+            _formUI.ShowResources(Storage.resources);
+            _formUI.ShowPlanetResources(planetResources);
         }
 
         public void CreateColony(string colonyName)
         {
-            Colony newColony = new Colony(colonyName, colonies.Count, formUI, this);
-            formUI.OnCreateColony(newColony);
-            colonies.Add(newColony);
+            bool enoughMoney = true;
+
+            foreach (KeyValuePair<Type, Resource> currentResource in _colonyCost.resources)
+            {
+                if (currentResource.Value.Amount >
+                    Storage.resources[currentResource.Key].Amount)
+                {
+                    enoughMoney = false;
+                }
+            }
+
+            if (enoughMoney) {
+                Colony newColony = new Colony(colonyName, colonies.Count, _formUI, this);
+                _formUI.OnCreateColony(newColony);
+                colonies.Add(newColony);
+
+                Storage.Pay(_colonyCost);
+            }
         }
 
         public void SelectColony(object sender)

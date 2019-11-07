@@ -41,7 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resourcesPanel = new System.Windows.Forms.Panel();
             this.planetResourcesPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -134,20 +133,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1136, 49);
+            this.label1.Location = new System.Drawing.Point(1131, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 17);
+            this.label1.Size = new System.Drawing.Size(127, 17);
             this.label1.TabIndex = 20;
-            this.label1.Text = "50 gold | 30 wood";
+            this.label1.Text = "100 gold | 75 wood";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1312, 48);
+            this.label2.Location = new System.Drawing.Point(1311, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 17);
             this.label2.TabIndex = 21;
-            this.label2.Text = "20 gold | 100 wood";
+            this.label2.Text = "50 gold | 125 wood";
             // 
             // resourcesPanel
             // 
@@ -167,23 +166,14 @@
             this.planetResourcesPanel.Size = new System.Drawing.Size(245, 262);
             this.planetResourcesPanel.TabIndex = 23;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(355, 49);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "*price*";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(883, 48);
+            this.label4.Location = new System.Drawing.Point(845, 48);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 17);
+            this.label4.Size = new System.Drawing.Size(135, 17);
             this.label4.TabIndex = 25;
-            this.label4.Text = "*price*";
+            this.label4.Text = "500 gold | 500 wood";
             // 
             // Form1
             // 
@@ -191,7 +181,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1582, 853);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.planetResourcesPanel);
             this.Controls.Add(this.resourcesPanel);
             this.Controls.Add(this.label2);
@@ -227,7 +216,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel resourcesPanel;
         private System.Windows.Forms.Panel planetResourcesPanel;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
     }
 }

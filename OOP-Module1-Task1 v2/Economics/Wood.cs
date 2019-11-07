@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OOP_Module1_Task1_v2
+﻿namespace OOP_Module1_Task1_v2
 {
     class Wood : Resource
     {

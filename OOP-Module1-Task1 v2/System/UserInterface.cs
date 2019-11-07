@@ -1,38 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
 {
     class UserInterface
     {
-        private int planetLabelPosition;
-        private int colonyLabelPosition;
-        private int buildingLabelPosition;
-        private int planetResourcesLabelPosition;
-        private int resourcesLabelPosition;
-        private Panel planetsPanel;
-        private Panel coloniesPanel;
-        private Panel buildingsPanel;
-        private Panel planetResourcesPanel;
-        private Panel resourcesPanel;
+        const int InitialMargin = 10;
+        const int StepMargin = 30;
+        const int FontSize = 11;
+
+        private int _planetLabelPosition;
+        private int _colonyLabelPosition;
+        private int _buildingLabelPosition;
+        private int _planetResourcesLabelPosition;
+        private int _resourcesLabelPosition;
+        private readonly Panel _planetsPanel;
+        private readonly Panel _coloniesPanel;
+        private readonly Panel _buildingsPanel;
+        private readonly Panel _planetResourcesPanel;
+        private readonly Panel _resourcesPanel;
 
         public UserInterface(Panel newPlanetsPanel, Panel newColoniesPanel,
             Panel newBuildingsPanel, Panel newPlanetResourcesPanel, Panel newResourcesPanel)
         {
-            planetLabelPosition = 10;
-            colonyLabelPosition = 10;
-            buildingLabelPosition = 10;
+            _planetLabelPosition = InitialMargin;
+            _colonyLabelPosition = InitialMargin;
+            _buildingLabelPosition = InitialMargin;
+            _planetResourcesLabelPosition = InitialMargin;
+            _resourcesLabelPosition = InitialMargin;
 
-            planetsPanel = newPlanetsPanel;
-            coloniesPanel = newColoniesPanel;
-            buildingsPanel = newBuildingsPanel;
-            planetResourcesPanel = newPlanetResourcesPanel;
-            resourcesPanel = newResourcesPanel;
+        _planetsPanel = newPlanetsPanel;
+            _coloniesPanel = newColoniesPanel;
+            _buildingsPanel = newBuildingsPanel;
+            _planetResourcesPanel = newPlanetResourcesPanel;
+            _resourcesPanel = newResourcesPanel;
         }
 
         public void OnAddPlanet(Planet newPlanet)
@@ -45,34 +48,34 @@ namespace OOP_Module1_Task1_v2
                 newPlanet.coordinates.X,
                 newPlanet.coordinates.Y),
 
-                Location = new Point(10, planetLabelPosition),
+                Location = new Point(InitialMargin, _planetLabelPosition),
                 AutoSize = true,
                 Name = newPlanet.Number.ToString(),
-                Font = new Font("Arial", 14)
+                Font = new Font("Arial", FontSize)
             };
 
             planetLabel.Click += new EventHandler(
                 (sender, e) => SelectPlanetWrapper(sender, e, newPlanet));
 
-            planetLabelPosition += 30;
-            planetsPanel.Controls.Add(planetLabel);
+            _planetLabelPosition += StepMargin;
+            _planetsPanel.Controls.Add(planetLabel);
         }
 
-        private void SelectPlanetWrapper(object sender, EventArgs e, Planet newPlanet)
+        private void SelectPlanetWrapper(object sender, EventArgs _, Planet newPlanet)
         {
             newPlanet.Form.SelectPlanet(sender);
         }
 
         public void OnUnselectPlanet(int planetNumber)
         {
-            planetsPanel.Controls[planetNumber].BackColor = Color.Transparent;
-            coloniesPanel.Controls.Clear();
-            buildingsPanel.Controls.Clear();
+            _planetsPanel.Controls[planetNumber].BackColor = Color.Transparent;
+            _coloniesPanel.Controls.Clear();
+            _buildingsPanel.Controls.Clear();
         }
 
         public void OnSelectPlanet(int planetNumber)
         {
-            planetsPanel.Controls[planetNumber].BackColor = Color.Beige;
+            _planetsPanel.Controls[planetNumber].BackColor = Color.Beige;
         }
 
         public void OnCreateColony(Colony newColony)
@@ -82,26 +85,26 @@ namespace OOP_Module1_Task1_v2
                 Text = string.Format("{0}",
                 newColony.Name),
 
-                Location = new Point(10, colonyLabelPosition),
+                Location = new Point(InitialMargin, _colonyLabelPosition),
                 AutoSize = true,
                 Name = newColony.Number.ToString(),
-                Font = new Font("Arial", 14)
+                Font = new Font("Arial", FontSize)
             };
 
             colonyLabel.Click += new EventHandler(
                 (sender, e) => SelectColonyWrapper(sender, e, newColony));
-            coloniesPanel.Controls.Add(colonyLabel);
-            colonyLabelPosition += 30;
+            _coloniesPanel.Controls.Add(colonyLabel);
+            _colonyLabelPosition += StepMargin;
         }
 
-        private void SelectColonyWrapper(object sender, EventArgs e, Colony newColony)
+        private void SelectColonyWrapper(object sender, EventArgs _, Colony newColony)
         {
             newColony.Planet.SelectColony(sender);
         }
 
         public void ShowColonies(IList<Colony> colonies)
         {
-            colonyLabelPosition = 10;
+            _colonyLabelPosition = InitialMargin;
 
             for (int currentColony = 0; currentColony < colonies.Count; currentColony++)
             {
@@ -110,34 +113,34 @@ namespace OOP_Module1_Task1_v2
                     Text = string.Format("{0}",
                     colonies[currentColony].Name),
 
-                    Location = new Point(10, colonyLabelPosition),
+                    Location = new Point(InitialMargin, _colonyLabelPosition),
                     AutoSize = true,
                     Name = currentColony.ToString(),
-                    Font = new Font("Arial", 14)
+                    Font = new Font("Arial", FontSize)
                 };
 
                 colonyLabel.Click += new EventHandler(
                     (sender, e) => SelectColonyWrapper(sender, e, colonies[currentColony - 1]));
 
-                colonyLabelPosition += 30;
-                coloniesPanel.Controls.Add(colonyLabel);
+                _colonyLabelPosition += StepMargin;
+                _coloniesPanel.Controls.Add(colonyLabel);
             }
         }
 
         public void OnUnselectColony(int colonyNumber) {
-            coloniesPanel.Controls[colonyNumber].BackColor = Color.Transparent;
-            buildingsPanel.Controls.Clear();
+            _coloniesPanel.Controls[colonyNumber].BackColor = Color.Transparent;
+            _buildingsPanel.Controls.Clear();
         }
 
         public void OnSelectColony(int colonyNumber)
         {
-            coloniesPanel.Controls[colonyNumber].BackColor = Color.Beige;
+            _coloniesPanel.Controls[colonyNumber].BackColor = Color.Beige;
         }
 
         public void ShowPlanetResources(Dictionary<Type, Resource> planetResources)
         {
-            planetResourcesPanel.Controls.Clear();
-            planetResourcesLabelPosition = 10;
+            _planetResourcesPanel.Controls.Clear();
+            _planetResourcesLabelPosition = InitialMargin;
 
             foreach (var resource in planetResources)
             {
@@ -146,13 +149,13 @@ namespace OOP_Module1_Task1_v2
                     Text = string.Format("({0} more left)",
                     resource.Value.Amount),
 
-                    Location = new Point(10, planetResourcesLabelPosition),
+                    Location = new Point(InitialMargin, _planetResourcesLabelPosition),
                     AutoSize = true,
-                    Font = new Font("Arial", 14)
+                    Font = new Font("Arial", FontSize)
                 };
 
-                planetResourcesPanel.Controls.Add(resourcesLabel);
-                planetResourcesLabelPosition += 30;
+                _planetResourcesPanel.Controls.Add(resourcesLabel);
+                _planetResourcesLabelPosition += StepMargin;
             }
         }
 
@@ -165,19 +168,19 @@ namespace OOP_Module1_Task1_v2
                     newBuilding.coordinates.X,
                     newBuilding.coordinates.Y),
 
-                Location = new Point(10, buildingLabelPosition),
+                Location = new Point(InitialMargin, _buildingLabelPosition),
                 AutoSize = true,
                 Name = newBuilding.Number.ToString(),
-                Font = new Font("Arial", 14)
+                Font = new Font("Arial", FontSize)
             };
 
-            buildingsPanel.Controls.Add(buildingLabel);
-            buildingLabelPosition += 30;
+            _buildingsPanel.Controls.Add(buildingLabel);
+            _buildingLabelPosition += StepMargin;
         }
 
         public void ShowBuildings(IList<Building> Buildings)
         {
-            buildingLabelPosition = 10;
+            _buildingLabelPosition = InitialMargin;
 
             foreach (var currentBuilding in Buildings)
             {
@@ -188,21 +191,21 @@ namespace OOP_Module1_Task1_v2
                     currentBuilding.coordinates.X,
                     currentBuilding.coordinates.Y),
 
-                    Location = new Point(10, buildingLabelPosition),
+                    Location = new Point(InitialMargin, _buildingLabelPosition),
                     AutoSize = true,
                     Name = currentBuilding.ToString(),
-                    Font = new Font("Arial", 14)
+                    Font = new Font("Arial", FontSize)
                 };
 
-                buildingLabelPosition += 30;
-                buildingsPanel.Controls.Add(buildingLabel);
+                _buildingLabelPosition += StepMargin;
+                _buildingsPanel.Controls.Add(buildingLabel);
             }
         }
 
         public void ShowResources(Dictionary<Type, Resource> resources)
         {
-            resourcesPanel.Controls.Clear();
-            resourcesLabelPosition = 10;
+            _resourcesPanel.Controls.Clear();
+            _resourcesLabelPosition = InitialMargin;
 
             foreach (var resource in resources)
             {
@@ -212,13 +215,13 @@ namespace OOP_Module1_Task1_v2
                     resource.Value.Name,
                     resource.Value.Amount),
 
-                    Location = new Point(10, resourcesLabelPosition),
+                    Location = new Point(InitialMargin, _resourcesLabelPosition),
                     AutoSize = true,
-                    Font = new Font("Arial", 14)
+                    Font = new Font("Arial", FontSize)
                 };
 
-                resourcesPanel.Controls.Add(resourcesLabel);
-                resourcesLabelPosition += 30;
+                _resourcesPanel.Controls.Add(resourcesLabel);
+                _resourcesLabelPosition += StepMargin;
             }
         }
     }
