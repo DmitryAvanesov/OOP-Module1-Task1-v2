@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace OOP_Module1_Task1_v2
@@ -6,9 +7,10 @@ namespace OOP_Module1_Task1_v2
     abstract class Building : MapObject
     {
         public abstract string Name { get; }
-        public Storage Storage { get; set; }
+        public int Number { get; set; }
         public Planet Planet { get; set; }
 
+        public UserInterface FormUI;
         protected Timer timer;
         protected int interval = 5000;
 
@@ -25,20 +27,28 @@ namespace OOP_Module1_Task1_v2
 
         public abstract void GetResource(object sender, EventArgs e);
 
-        protected void GetResourcesInner<T>(int gold, int wood)
+        protected void GetResourcesInner(ResourceBox extraction)
         {
-            Random random = new Random();
-            int resourceAmount = random.Next(gold, wood);
+            bool enoughResources = true;
 
-            if (resourceAmount <= Planet.planetResources[typeof(T)].Amount)
+            foreach (KeyValuePair<Type, Resource> currentResource in extraction.resources)
             {
-                Storage.Earn<T>(resourceAmount);
-                Planet.ExtractResources<T>(resourceAmount);
+                if (currentResource.Value.Amount >
+                    Planet.planetResources[currentResource.Key].Amount)
+                {
+                    enoughResources = false;
+                }
+            }
+
+            if (enoughResources)
+            {
+                Planet.Storage.Earn(extraction);
+                Planet.ExtractResources(extraction);
 
                 if (Planet.IsSelected)
                 {
-                    Storage.ShowResources();
-                    Planet.ShowPlanetResources();
+                    FormUI.ShowResources(Planet.Storage.resources);
+                    FormUI.ShowPlanetResources(Planet.planetResources);
                 }
             }
         }

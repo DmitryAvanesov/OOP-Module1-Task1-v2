@@ -9,7 +9,8 @@ namespace OOP_Module1_Task1_v2
 
         public override void GetResource(object sender, EventArgs e)
         {
-            GetResourcesInner<Wood>(1, 7);
+            Random random = new Random();
+            GetResourcesInner(new ResourceBox(0, random.Next(1, 10), FormUI));
         }
     }
 }

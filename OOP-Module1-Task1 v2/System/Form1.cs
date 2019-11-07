@@ -7,50 +7,26 @@ namespace OOP_Module1_Task1_v2
 {
     public partial class Form1 : Form
     {
-        private readonly List<Planet> planets = new List<Planet>();
-        private int labelPosition;
+        private UserInterface formUI;
+        private readonly IList<Planet> planets = new List<Planet>();
         private int selectedPlanet = -1;
 
         public Form1()
         {
             InitializeComponent();
 
-            // fullscreen
-            TopMost = true;
-            FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
-
-            labelPosition = 10;
+            formUI = new UserInterface(planetsPanel, coloniesPanel,
+                buildingsPanel, planetResourcesPanel, resourcesPanel);
         }
 
         public void AddPlanet(string name)
         {
-            Planet newPlanet = new Planet(name, coloniesPanel, buildingsPanel,
-                resourcesPanel, planetResourcesPanel);
-
-            Label planetLabel = new Label
-            {
-                Text = string.Format("{0} | {1} km radius | x: {2}; y: {3}",
-                newPlanet.Name,
-                newPlanet.Radius,
-                newPlanet.coordinates.X,
-                newPlanet.coordinates.Y),
-
-                Location = new Point(10, labelPosition),
-                AutoSize = true,
-                Name = planets.Count.ToString(),
-                Font = new Font("Arial", 14)
-            };
-
-            planetLabel.Click += new EventHandler(SelectPlanet);
-            newPlanet.Label = planetLabel;
-
+            Planet newPlanet = new Planet(name, formUI, planets.Count, this);
+            formUI.OnAddPlanet(newPlanet);
             planets.Add(newPlanet);
-            labelPosition += 30;
-            planetsPanel.Controls.Add(planetLabel);
         }
 
-        private void SelectPlanet(object sender, EventArgs e)
+        public void SelectPlanet(object sender)
         {
             Label planetLabel = sender as Label;
 
@@ -81,7 +57,7 @@ namespace OOP_Module1_Task1_v2
             {
                 planets[selectedPlanet].colonies
                     [planets[selectedPlanet].SelectedColony].CreateBuilding<Goldmine>
-                    (planets[selectedPlanet].Storage, 50, 30);
+                    (new ResourceBox(50, 20, formUI));
             }
         }
 
@@ -91,7 +67,7 @@ namespace OOP_Module1_Task1_v2
             {
                 planets[selectedPlanet].colonies
                     [planets[selectedPlanet].SelectedColony].CreateBuilding<Sawmill>
-                    (planets[selectedPlanet].Storage, 20, 100);
+                    (new ResourceBox(20, 100, formUI));
             }
         }
     }
